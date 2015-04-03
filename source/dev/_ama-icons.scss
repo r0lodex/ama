@@ -24,6 +24,10 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.icon-logo:before 			{ content: "\e603"; }
+.icon-bubble:before 		{ content: "\e605"; }
+.icon-study:before 			{ content: "\e606"; }
+
 .icon-tick:before 			{ content: "\e60a"; }
 .icon-x:before 				{ content: "\e60c"; }
 .icon-plus:before 			{ content: "\e621"; }
@@ -48,6 +52,7 @@
 .icon-bell:before 			{ content: "\e951"; }
 .icon-calendar:before 		{ content: "\e953"; }
 .icon-user:before 			{ content: "\e971"; }
+.icon-user2:before 			{ content: "\e604"; }
 .icon-users:before 			{ content: "\e972"; }
 .icon-user-plus:before 		{ content: "\e973"; }
 .icon-user-minus:before 	{ content: "\e974"; }
