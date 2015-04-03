@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50541
 File Encoding         : 65001
 
-Date: 2015-04-03 20:38:38
+Date: 2015-04-03 22:29:18
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -82,11 +82,13 @@ CREATE TABLE `user` (
   `email` varchar(50) DEFAULT NULL,
   `phone` varchar(50) DEFAULT NULL,
   `type` varchar(10) DEFAULT NULL,
+  `apikey` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', 'karim', 'karim', 'karim razali', 'karim@gst.my', '0123456789', 'admin');
-INSERT INTO `user` VALUES ('2', 'zarina', 'zarina', 'zarina laili', 'zarina@gst.my', '0123456789', null);
+INSERT INTO `user` VALUES ('1', 'admin', 'admin', 'karim razali', 'karim@gst.my', '0123456789', 'admin', null);
+INSERT INTO `user` VALUES ('2', 'zarina', 'zarina', 'zarina laili', 'zarina@gst.my', '0123456789', 'user', null);
+INSERT INTO `user` VALUES ('3', 'leman', 'leman', 'suleiman akhlaken', 'leman@gst.my', '0123456789', 'user', null);
