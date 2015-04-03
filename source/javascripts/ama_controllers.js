@@ -35,7 +35,9 @@ angular.module('ama')
 	$scope.sort.order = false;
 
 	// View/Edit Student
-	$scope.showStudent = function(id) {};
+	$scope.showStudent = function(id) {
+		$scope.theStudent = Student.get({ id:parseInt(id) })
+	};
 
 	$scope.newStudent = function() {
 		ModalService.showModal({
