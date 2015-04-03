@@ -36,9 +36,6 @@ WHO-DID-THIS {
 @import "ama-icons";
 
 // OVERRIDES
-body {
-	// background: #666;
-}
 #home {
 	max-width: 300px;
 	margin: 0 auto;
@@ -47,3 +44,19 @@ body {
 	}
 }
 .light { font-family: "glight"; }
+
+.page-header {
+	margin-top: 0;
+}
+
+.table-heading {
+	font-family: 'Menlo', monospace;
+	font-weight: normal;
+	color: $gray-light;
+	text-transform: uppercase;
+	font-size: 0.8em;
+}
+
+.table-hover:hover {
+	cursor: pointer;
+}
