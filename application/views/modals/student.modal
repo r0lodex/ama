@@ -1,5 +1,5 @@
 <div class="modal">
-	<div class="modal-dialog">
+	<div class="modal-dialog modal-sm">
 		<div class="modal-content">
 			<div class="modal-header">
 				<h4 class="text-uppercase">Add New Student</h4>
