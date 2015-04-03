@@ -8,10 +8,15 @@ angular.module('ama')
     };
 })
 
+// == UNIFORM CONTROLLER
+// -------------------------------
 .controller('uniformCTRL', function($scope) {
 	console.log('Uniform');
 })
 
+
+// == STUDENT CONTROLLER
+// -------------------------------
 .controller('studentCTRL', function($scope, $location, Student, ModalService) {
 	// Dapatkan senarai Student
 	$scope.students = Student.query();
@@ -41,46 +46,29 @@ angular.module('ama')
 		})
 	};
 
+	$scope.student = new Student({
+		name 	: ['', 'text'],
+		ic 		: ['', 'text'],
+		matrix 	: ['', 'text'],
+		uniform : ['', 'number'],
+		course 	: ['', 'text']
+	})
+
+	$scope.save = function() {
+		if ($scope.newStudent.$invalid) {
+			$scope.$broadcast('record:invalid');
+		} else {
+			$scope.student.$save();
+		}
+	}
+
 	$scope.deleteStudent = function(id) {}
 
-	$scope.student = new Student({
-		name 	: ['', 'text'],
-		ic 		: ['', 'text'],
-		matrix 	: ['', 'text'],
-		uniform : ['', 'number'],
-		course 	: ['', 'text']
-	})
-
-	$scope.save = function() {
-		console.log('Test')
-		if ($scope.newStudent.$invalid) {
-			$scope.$broadcast('record:invalid');
-		} else {
-			$scope.student.$save();
-		}
-	}
-
 })
 
-.controller('newStudentCTRL', function($scope, $location, Student) {
-	$scope.student = new Student({
-		name 	: ['', 'text'],
-		ic 		: ['', 'text'],
-		matrix 	: ['', 'text'],
-		uniform : ['', 'number'],
-		course 	: ['', 'text']
-	})
 
-	$scope.save = function() {
-		console.log('Test')
-		if ($scope.newStudent.$invalid) {
-			$scope.$broadcast('record:invalid');
-		} else {
-			$scope.student.$save();
-		}
-	}
-})
-
+// == USER CONTROLLER
+// -------------------------------
 .controller('userCTRL', function($scope) {
 	console.log('Users');
 })
