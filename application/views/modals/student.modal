@@ -1,0 +1,22 @@
+<div class="modal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="text-uppercase">Add New Student</h4>
+			</div>
+			<div class="modal-body">
+				<form name="newStudent" novalidate>
+					<form-field record="student" field="name" live="false" required="true"></form-field>
+					<form-field record="student" field="ic" live="false" required="true"></form-field>
+					<form-field record="student" field="matrix" live="false" required="true"></form-field>
+					<form-field record="student" field="uniform" live="false" required="true"></form-field>
+					<form-field record="student" field="course" live="false" required="true"></form-field>
+				</form>
+			</div>
+			<div class="modal-footer text-center">
+				<button class="btn btn-primary btn-sm" ng-click="save()" type="button">Add Student</button>
+				<button class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>

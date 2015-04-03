@@ -1,0 +1,30 @@
+<!-- STUDENTS LIST-->
+<div class="form-inline">
+	<div class="form-group">
+		<button class="btn btn-dark btn-sm" ng-click="newStudent()">Add Student</button>
+	</div>
+	<div class="form-group">
+		<input class="form-control input-sm" type="search" ng-model="query" placeholder="Filter Student">
+	</div>
+</div>
+<br>
+<div class="table-responsive">
+	<table class="table table-condensed table-bordered table-hover">
+		<thead>
+			<tr>
+				<th ng-repeat="field in fields" ng-click="sort(field)" class="table-heading">
+					<span ng-show="sort.field === field && !sort.order" class="icon icon-circle-down"></span>
+					<span ng-show="sort.field === field && sort.order" class="icon icon-circle-up"></span>
+					<attr>{{ field }}</attr>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-click="showStudent(student.id)" ng-repeat="student in students | filter: query | orderBy: sort.field:sort.order">
+				<td ng-repeat="field in fields">
+					{{ student[field] }}
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

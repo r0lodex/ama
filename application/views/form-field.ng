@@ -1,0 +1,17 @@
+<div class="form-group" ng-form="{{ field }}" ng-class="{ 'has-error': {{ field }}.$dirty && {{ field }}.$invalid }">
+	<label>{{ field | capitalize }} <span ng-if="required">*</span></label>
+	<span ng-switch="required">
+		<input ng-switch-when="true" ng-model="record[field][0]" type="{{ record[field][1] }}" class="form-control" required ng-change="update()" ng-blur="blurUpdate()">
+		<input ng-switch-when="false" ng-model="record[field][0]" type="{{ record[field][1] }}" class="form-control" ng-change="update()" ng-blur="blurUpdate()">
+	</span>
+<!--
+TODO: Fix this.
+Syntax error @ https://docs.angularjs.org/error/$parse/syntax?p0=%7B&p1=invalid%20key&p2=2&p3=%7B%7Bfield%7D%7D.$error&p4=%7Bfield%7D%7D.$error
+
+	<div class="has-error" ng-show="{{field}}.$dirty && {{field}}.$invalid" ng-messages="{{field}}.$error">
+		<small ng-message="required">{{ field | capitalize }} is required.</small>
+		<small ng-repeat="(k,v) in types" ng-message="{{ k }}">{{ field | capitalize }} {{ v[1] }}</small>
+	</div>
+
+-->
+</div>
