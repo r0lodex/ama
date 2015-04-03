@@ -17,22 +17,23 @@ $data = json_decode($json,true);
 switch($request[0]) {
 
 	case 'user':
-		// <domain>/backend/router.php/user
-		include 'userController.php';
+		// http://<domain>/backend/router.php/user
+ 		include 'userController.php';
 	break;
 
 	case 'absent':
-		// <domain>/backend/router.php/absent
+		// http://<domain>/backend/router.php/absent
+		// 
 		include 'absentController.php';
 	break;
 
 	case 'student':
-		// <domain>/backend/router.php/student
+		// http://<domain>/backend/router.php/student
 		include 'studentController.php';
 	break;
 
 	case 'uniform':
-		// <domain>/backend/router.php/uniform
+		// http://<domain>/backend/router.php/uniform
 		include 'uniformController.php';
 	break;
 
