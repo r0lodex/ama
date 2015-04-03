@@ -1,0 +1,36 @@
+WHO-DID-THIS {
+	name: "Irfan Radzi";
+	email: "rolodex888@gmail.com";
+	url: "http://mrjunior.my";
+}
+// FONTS
+@font-face {
+	font-family: "gbook";
+    src: url('../fonts/gbook.eot');
+    src: url('../fonts/gbook?#iefix') format('embedded-opentype'),
+	     url('../fonts/gbook.woff') format('woff'),
+	     url('../fonts/gbook.ttf') format('truetype'),
+	     url('../fonts/gbook.svg#gbook') format('svg');
+    font-weight: normal;
+    font-style: normal;}
+@font-face {
+	font-family: "gbold";
+    src: url('../fonts/gbold.eot');
+    src: url('../fonts/gbold?#iefix') format('embedded-opentype'),
+	     url('../fonts/gbold.woff') format('woff'),
+	     url('../fonts/gbold.ttf') format('truetype'),
+	     url('../fonts/gbold.svg#gbold') format('svg');
+    font-weight: normal;
+    font-style: normal;}
+@font-face {
+	font-family: "glight";
+    src: url('../fonts/glight.eot');
+    src: url('../fonts/glight?#iefix') format('embedded-opentype'),
+	     url('../fonts/glight.woff') format('woff'),
+	     url('../fonts/glight.ttf') format('truetype'),
+	     url('../fonts/glight.svg#glight') format('svg');
+    font-weight: normal;
+    font-style: normal;}
+
+@import "bootstrap/stylesheets/bootstrap";
+@import "ama-icons";

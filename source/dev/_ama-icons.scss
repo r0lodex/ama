@@ -1,0 +1,63 @@
+@font-face {
+	font-family: 'ama';
+	src:url('../fonts/ama.eot?t5tl0p');
+	src:url('../fonts/ama.eot?#iefixt5tl0p') format('embedded-opentype'),
+		url('../fonts/ama.woff?t5tl0p') format('woff'),
+		url('../fonts/ama.ttf?t5tl0p') format('truetype'),
+		url('../fonts/ama.svg?t5tl0p#ama') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+.icon {
+	font-family: 'ama';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	position: relative;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-tick:before 			{ content: "\e60a"; }
+.icon-x:before 				{ content: "\e60c"; }
+.icon-plus:before 			{ content: "\e621"; }
+.icon-minus:before 			{ content: "\e623"; }
+.icon-key1:before 			{ content: "\e632"; }
+.icon-key2:before 			{ content: "\e633"; }
+.icon-key3:before 			{ content: "\e600"; }
+.icon-new-window:before 	{ content: "\e634"; }
+.icon-cd:before 			{ content: "\e654"; }
+.icon-at:before 			{ content: "\e66e"; }
+.icon-info:before 			{ content: "\e670"; }
+.icon-lock1:before 			{ content: "\e696"; }
+.icon-lock2:before 			{ content: "\e601"; }
+.icon-profile:before 		{ content: "\e923"; }
+.icon-paste:before 			{ content: "\e92d"; }
+.icon-barcode:before 		{ content: "\e937"; }
+.icon-qrcode:before 		{ content: "\e938"; }
+.icon-ticket:before 		{ content: "\e939"; }
+.icon-address-book:before 	{ content: "\e944"; }
+.icon-envelope:before 		{ content: "\e945"; }
+.icon-alarm:before 			{ content: "\e950"; }
+.icon-bell:before 			{ content: "\e951"; }
+.icon-calendar:before 		{ content: "\e953"; }
+.icon-user:before 			{ content: "\e971"; }
+.icon-users:before 			{ content: "\e972"; }
+.icon-user-plus:before 		{ content: "\e973"; }
+.icon-user-minus:before 	{ content: "\e974"; }
+.icon-user-check:before 	{ content: "\e975"; }
+.icon-user-tie:before 		{ content: "\e976"; }
+.icon-binoculars:before 	{ content: "\e985"; }
+.icon-equalizer:before 		{ content: "\e992"; }
+.icon-cog:before 			{ content: "\e994"; }
+.icon-magic-wand:before 	{ content: "\e997"; }
+.icon-facebook-square:before{ content: "\ea8d"; }
+.icon-facebook-round:before { content: "\ea8e"; }
+.icon-github:before 		{ content: "\eab4"; }
+.icon-note:before  			{ content: "\e602"; }
