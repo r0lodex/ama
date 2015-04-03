@@ -1,3 +1,7 @@
+<?php
+if(!isset($_SESSION)) {session_start();}
+if(!isset($_SESSION['authorized'])) {header('Location:../');}
+?>
 <!DOCTYPE html>
 <html ng-app="ama">
 <head>
@@ -30,7 +34,7 @@
 
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#"><span class="icon icon-users"></span> Users</a></li>
-					<li><a href="#">Logout</a></li>
+					<li><a href="../backend/router.php/logout">Logout</a></li>
 				</ul>
 			</div>
 		</div>

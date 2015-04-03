@@ -13,7 +13,7 @@ switch($method) {
 	break;
 
 	case 'POST':
-		$sql ="INSERT INTO user (username, password, name, email, phone) VALUES (:username, :password, :name, :email, :phone)";
+		$sql ="INSERT INTO user (username, password, name, email, phone, type) VALUES (:username, :password, :name, :email, :phone, 'user')";
 		$dbc = Database();
 		$qry = $dbc->prepare($sql);
 		$qry->execute($data);

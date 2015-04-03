@@ -1,3 +1,7 @@
+<?php
+if(!isset($_SESSION)) {session_start();}
+if(isset($_SESSION['authorized'])) {header('Location:application');}
+?>
 <!DOCTYPE html>
 <html>
 <?php include 'source/templates/head_content.tpl'; ?>
@@ -10,7 +14,7 @@
 				</h1>
 				<p>Co-Curiculum Attendance System</p>
 			</div>
-			<form id="login" method="POST" action="application/index.php">
+			<form id="login" method="POST" action="backend/router.php/login">
 				<div class="form-group">
 					<div class="input-group">
 						<span class="input-group-addon"><span class="icon icon-user2"></span></span>
