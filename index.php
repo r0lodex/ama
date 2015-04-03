@@ -8,9 +8,9 @@
 				<h1 class="light">
 					<span class="icon icon-logo"></span><br>AMA
 				</h1>
-				<p>Co-Couriculum Attendance System</p>
+				<p>Co-Curiculum Attendance System</p>
 			</div>
-			<form id="login" method="POST" action="backend/router.php">
+			<form id="login" method="POST" action="application/index.php">
 				<div class="form-group">
 					<div class="input-group">
 						<span class="input-group-addon"><span class="icon icon-user2"></span></span>
@@ -23,13 +23,13 @@
 						<input class="form-control" type="password" name="password" placeholder="Password" required>
 					</div>
 				</div>
-				<input class="btn btn-default center-block" type="submit" value="Login">
+				<input class="btn btn-dark center-block" type="submit" value="Login">
 			</form>
 			<hr>
 			<section class="text-center text-muted">
 				<small>
 					A final-year-project by PMJ Students<br>
-					<a href="#">About The Team</a> &bull; <a href="#">Disclaimer</a>
+					<a href="about.php">About The Team</a> &bull; <a href="#">Disclaimer</a>
 				</small>
 			</section>
 		</section>
