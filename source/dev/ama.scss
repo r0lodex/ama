@@ -34,3 +34,16 @@ WHO-DID-THIS {
 
 @import "bootstrap/stylesheets/bootstrap";
 @import "ama-icons";
+
+// OVERRIDES
+body {
+	// background: #666;
+}
+#home {
+	max-width: 300px;
+	margin: 0 auto;
+	.icon-logo {
+		font-size: 2em;
+	}
+}
+.light { font-family: "glight"; }
