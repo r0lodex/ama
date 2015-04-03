@@ -2,6 +2,7 @@
 if(!isset($_SESSION)) {session_start();}
 if(isset($_SESSION['authorized'])) {header('Location:application');}
 ?>
+
 <!DOCTYPE html>
 <html>
 <?php include 'source/templates/head_content.tpl'; ?>
@@ -40,3 +41,37 @@ if(isset($_SESSION['authorized'])) {header('Location:application');}
 	</div>
 </body>
 </html>
+
+<!--
+
+	Aplikasi ini menggunakan teknologi dan framework berikut:
+
+	BACKEND (Server)
+	==================
+		1. PHP (PDO)
+		2. MySQL
+
+	FRONTEND (Browser/Client)
+	=========================
+		1. AngularJS 1.3.2
+			AngularJS adalah framework SPA(Single Page Application)
+			yang memudahkan penggunaan javascript terutamanya data-binding.
+			Google Keyword: 'Javascript Data-Binding'
+
+			Layari : http://angularjs.org
+
+		2. Twitter Bootstrap 3.3
+			Bootstrap adalah mobile-ready framework CSS yang memudahkan developer untuk
+			menulis HTML tanpa perlu fikir sangat tentang CSS. Boleh lihat
+			dokumentasi untuk maklumat lanjut. Kebanyakan modern web
+			menggunakan framework ini.
+
+			Cara Struktur HTML 		 : http://getbootstrap.com/css
+			Cara Struktur Komponen	 : http://getbootstrap.com/components
+			Cara Pengunaan Javascript: http://getbootstrap.com/javascript
+
+		3. jQuery 1.10 : http://jquery.com
+			Sebuah library yang simplify penggunaan javascript. Korang
+			pun mesti tahu benda ni, kompom.
+
+-->
