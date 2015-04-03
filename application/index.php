@@ -26,19 +26,22 @@ if(!isset($_SESSION['authorized'])) {header('Location:../');}
 			</div>
 
 			<!-- Dashboard Navigation -->
-			<div class="collapse navbar-collapse" id="nav">
+			<div class="collapse navbar-collapse" id="nav" ng-controller="navCTRL">
 				<ul class="nav navbar-nav">
-					<li><a href="#"><span class="icon icon-shield"></span> Uniforms</a></li>
-					<li><a href="#"><span class="icon icon-users"></span> Students</a></li>
+					<li ng-class="{active:isActive('/uniforms')}"><a href="#/uniforms"><span class="icon icon-shield"></span> Uniforms</a></li>
+					<li ng-class="{active:isActive('/students')}"><a href="#/students"><span class="icon icon-address-book"></span> Students</a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#"><span class="icon icon-users"></span> Users</a></li>
+					<li><a href="#/users"><span class="icon icon-users"></span> Users</a></li>
 					<li><a href="../backend/router.php/logout">Logout</a></li>
 				</ul>
 			</div>
 		</div>
 	</nav>
+
+	<!-- Views Container: Setiap link akan load templates dalam [application/views]  -->
+	<div class="container" ng-view></div>
 
 	<!-- App Dependencies -->
 	<script src="../source/vendor/jquery/jquery.min.js"></script>
@@ -46,7 +49,9 @@ if(!isset($_SESSION['authorized'])) {header('Location:../');}
 	<script src="../source/vendor/angular/angular.min.js"></script>
 
 	<!-- Angular JS Dependencies -->
+	<script src="../source/vendor/angular/angular-resource.min.js"></script>
 	<script src="../source/vendor/angular/angular-route.js"></script>
+	<script src="../source/vendor/angular/angular-messages.min.js"></script>
 	<script src="../source/vendor/angular/angular-modal-service.js"></script>
 
 	<!-- AMA's Javascripts -->
