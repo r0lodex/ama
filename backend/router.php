@@ -37,6 +37,7 @@ switch($request[0]) {
 	break;
 
 	default:
+		// could be used with chrome POSTMAN to test data and method (GET, POST, PUT, DELETE)
 		echo $method;var_dump($request);var_dump($data);
 	break;
 
