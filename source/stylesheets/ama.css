@@ -2935,16 +2935,16 @@ select[multiple].input-lg,
 .btn-dark {
   color: #fff;
   background-color: #000;
-  border-color: #333; }
+  border-color: transparent; }
   .btn-dark:hover, .btn-dark:focus, .btn-dark.focus, .btn-dark:active, .btn-dark.active, .open > .btn-dark.dropdown-toggle {
     color: #fff;
     background-color: black;
-    border-color: #141414; }
+    border-color: transparent; }
   .btn-dark:active, .btn-dark.active, .open > .btn-dark.dropdown-toggle {
     background-image: none; }
   .btn-dark.disabled, .btn-dark.disabled:hover, .btn-dark.disabled:focus, .btn-dark.disabled.focus, .btn-dark.disabled:active, .btn-dark.disabled.active, .btn-dark[disabled], .btn-dark[disabled]:hover, .btn-dark[disabled]:focus, .btn-dark[disabled].focus, .btn-dark[disabled]:active, .btn-dark[disabled].active, fieldset[disabled] .btn-dark, fieldset[disabled] .btn-dark:hover, fieldset[disabled] .btn-dark:focus, fieldset[disabled] .btn-dark.focus, fieldset[disabled] .btn-dark:active, fieldset[disabled] .btn-dark.active {
     background-color: #000;
-    border-color: #333; }
+    border-color: transparent; }
   .btn-dark .badge {
     color: #000;
     background-color: #fff; }
