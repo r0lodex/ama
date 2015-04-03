@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50541
 File Encoding         : 65001
 
-Date: 2015-04-03 18:50:16
+Date: 2015-04-03 20:38:38
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -39,18 +39,18 @@ CREATE TABLE `student` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT NULL,
   `ic` varchar(20) DEFAULT NULL,
-  `matrix_no` varchar(25) DEFAULT NULL,
+  `matrix` varchar(25) DEFAULT NULL,
   `uniform` varchar(50) DEFAULT NULL,
   `course` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=8192;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=8192;
 
 -- ----------------------------
 -- Records of student
 -- ----------------------------
 INSERT INTO `student` VALUES ('1', 'syukri', '111', '222', '1', 'Pendidikan');
 INSERT INTO `student` VALUES ('2', 'kamal', '444', '555', '2', 'Kejururawatan');
-INSERT INTO `student` VALUES ('10', 'Manaf', '777', '888', '3', 'Kejuruteraan');
+INSERT INTO `student` VALUES ('3', 'Manaf', '777', '888', '3', 'Kejuruteraan');
 
 -- ----------------------------
 -- Table structure for uniform
@@ -59,17 +59,16 @@ DROP TABLE IF EXISTS `uniform`;
 CREATE TABLE `uniform` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=8192;
 
 -- ----------------------------
 -- Records of uniform
 -- ----------------------------
-INSERT INTO `uniform` VALUES ('1', 'Pengakap', 'pengakap');
-INSERT INTO `uniform` VALUES ('2', 'Bomba', 'bomba');
-INSERT INTO `uniform` VALUES ('3', 'Polis', 'polis');
-INSERT INTO `uniform` VALUES ('4', 'Ambulans', 'ambulans');
+INSERT INTO `uniform` VALUES ('1', 'Pengakap');
+INSERT INTO `uniform` VALUES ('2', 'Bomba');
+INSERT INTO `uniform` VALUES ('3', 'Polis');
+INSERT INTO `uniform` VALUES ('4', 'Ambulans');
 
 -- ----------------------------
 -- Table structure for user
@@ -79,7 +78,7 @@ CREATE TABLE `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(50) DEFAULT NULL,
   `password` varchar(50) DEFAULT NULL,
-  `fullname` varchar(50) DEFAULT NULL,
+  `name` varchar(50) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
   `phone` varchar(50) DEFAULT NULL,
   `type` varchar(10) DEFAULT NULL,

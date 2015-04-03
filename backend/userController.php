@@ -2,7 +2,8 @@
 
 switch($method) {
 	case 'GET':
-		$sql = (isset($data['id'])) ? "SELECT * FROM user WHERE id=:id" : "SELECT * FROM user";
+		$data['id'] = (isset($request[1])) ? $request[1] : null;
+		$sql = ($data['id'] != null) ? "SELECT * FROM user WHERE id=:id" : "SELECT * FROM user";
 		$dbc = Database();
 		$qry = $dbc->prepare($sql);
 		$qry->execute($data);
@@ -12,7 +13,7 @@ switch($method) {
 	break;
 
 	case 'POST':
-		$sql ="INSERT INTO (username, password, name, email, phone) VALUES (:username, :password, :name, :email, :phone)";
+		$sql ="INSERT INTO user (username, password, name, email, phone) VALUES (:username, :password, :name, :email, :phone)";
 		$dbc = Database();
 		$qry = $dbc->prepare($sql);
 		$qry->execute($data);
@@ -20,6 +21,7 @@ switch($method) {
 	break;
 
 	case 'PUT':
+		$data['id'] = $request[1];
 		$sql ="UPDATE user SET username=:username, password=:password, name=:name, email=:email, phone=:phone WHERE id=:id";
 		$dbc = Database();
 		$qry = $dbc->prepare($sql);
@@ -28,6 +30,7 @@ switch($method) {
 	break;
 
 	case 'DELETE':
+		$data = array("id" => $request[1]);
 		$sql ="DELETE FROM user WHERE id=:id";
 		$dbc = Database();
 		$qry = $dbc->prepare($sql);
