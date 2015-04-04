@@ -1,0 +1,21 @@
+<div class="modal">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<h5 class="text-center text-uppercase light" style="padding: 5px"><k ng-if="editing">Edit</k><k ng-if="!editing">New</k> Uniform</h5>
+			<div class="modal-body">
+				<form name="new_uniform_form" novalidate>
+					<form-field record="uniform" field="name" live="false" required="true"></form-field>
+					<form-field record="uniform" field="credit" live="false" required="true"></form-field>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<div class="center-block">
+					<button ng-show="editing" class="btn btn-primary btn-sm" ng-click="addUniform()" type="button">Update</button>
+					<button ng-show="!editing" class="btn btn-primary btn-sm" ng-click="addUniform()" type="button">Add Uniform</button>
+					<button ng-show="editing" class="btn btn-danger btn-sm" ng-click="deleteUniform()" type="button">Delete</button>
+					<button class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

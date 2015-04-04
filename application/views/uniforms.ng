@@ -5,38 +5,18 @@
 </h3>
 <div class="row">
 	<div class="col-sm-3">
-		<button class="btn btn-default btn-sm" ng-click="UniformFORM()"><span class="glyphicon glyphicon-plus"></span> Add Uniform</button>
+		<button class="btn btn-default btn-sm" ng-click="ModalForm('uniform')"><span class="glyphicon glyphicon-plus"></span> Add Uniform</button>
 		<br>
 		<br>
 		<ul class="list-group">
 			<li class="list-group-item" ng-repeat="uniform in uniforms">
-				<h4 style="display: inline">{{ uniform.name }} Logn name</h4>
-				<a class="btn btn-default btn-xs">Record</a>
-				<a class="btn btn-default btn-xs">Edit</a>
+				<h4 style="display: inline">{{ uniform.name }}</h4> <small><a ng-click="showUniform(uniform.id)">Edit</a></small><br>
+				<small class="small" style="display: block; margin-top: 2px; padding-top: 5px; border-top: 1px dashed #CCC;">
+					<a href="#" class="btn btn-success btn-xs">Record</a>
+					<a href="#" class="btn btn-info btn-xs">Report</a>
+				</small>
 			</li>
 		</ul>
 	</div>
-	<div class="col-sm-9">
-		<h5>Pengakap</h5>
-		<div class="table-responsive">
-			<table class="table table-bordered">
-				<thead>
-					<tr>
-						<th>Name</th>
-						<th>Matrix</th>
-						<th>Class</th>
-						<th>Absent</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>Abu</td>
-						<td>YMCA12345</td>
-						<td>DELTA</td>
-						<td>2</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</div>
+	<div class="col-sm-9"></div>
 </div>

@@ -15,9 +15,54 @@ angular.module('ama')
 
 // == UNIFORM CONTROLLER
 // -------------------------------
-.controller('uniformCTRL', function($rootScope, $scope, Uniform) {
-	$scope.uniforms = Uniform.query();
-})
+	.controller('uniformCTRL', function($rootScope, $scope, Uniform) {
+		$scope.uniforms = Uniform.query();
+		$scope.showUniform = function(id) {
+			$rootScope.ModalForm('uniform', id);
+		}
+	})
+
+	.controller('newUniformCTRL', function($scope, modalData, Uniform) {
+
+		$scope.uniform = new Uniform({
+			name: '',
+			credit: ''
+		})
+
+		$scope.addUniform = function() {
+			if ($scope.new_uniform_form.$invalid) {
+				$scope.$broadcast('record:invalid');
+			} else {
+				$scope.uniform.$save();
+				alert('Uniform data successfully created.');
+				window.location.reload();
+				// Resorts to refreshing due to out of scope.
+			}
+		}
+	})
+
+	.controller('viewUniformCTRL', function($scope, modalData, Uniform) {
+		$scope.editing = true;
+		$scope.uniform = modalData;
+
+		$scope.addUniform = function() {
+			if ($scope.new_uniform_form.$invalid) {
+				$scope.$broadcast('record:invalid');
+			} else {
+				$scope.uniform.$update();
+				alert('Uniform data successfully updated.');
+				window.location.reload();
+				// Resorts to refreshing due to out of scope.
+			}
+		}
+		$scope.deleteUniform = function() {
+			var a = confirm('Are you sure you want to delete this uniform?');
+			if (a) {
+				$scope.uniform.$delete();
+				window.location.reload();
+			}
+		}
+	})
 
 // <-- end uniform
 
