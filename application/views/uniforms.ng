@@ -4,20 +4,63 @@
 	<k class="light">UNIFORMS</k>
 </h3>
 <div class="row">
-	<div class="col-sm-3">
+	<div class="col-md-3">
 		<button class="btn btn-default btn-sm" ng-click="ModalForm('uniform')"><span class="glyphicon glyphicon-plus"></span> Add Uniform</button>
 		<br>
 		<br>
 		<ul class="list-group">
 			<li class="list-group-item" ng-repeat="uniform in uniforms">
-				<h4 style="display: inline">{{ uniform.name }}</h4> <br>
+				<h4 style="display: inline">
+					{{ uniform.name }}
+					<small>Credit: {{ uniform.credit }}</small>
+				</h4> <br>
 				<small class="small" style="display: block; margin-top: 2px; padding-top: 5px; border-top: 1px dashed #CCC;">
 					<a ng-click="showUniform(uniform.id)">Edit</a> |
-					<a>Record</a> |
-					<a>Report</a>
+					<a ng-click="createUniformRecord(uniform.id)">Record</a> |
+					<a ng-click="uniformReport(uniform.id)">Report</a>
 				</small>
 			</li>
 		</ul>
 	</div>
-	<div class="col-sm-9"></div>
+	<div class="col-md-9" ng-show="record.length > 0">
+		<h3 style="margin-top:0;" class="light text-primary">Record for {{ uniformName }} <small>{{ date | date:'dd MMMM yyyy' }}</small></h3>
+		<div class="form-group">
+			<div class="input-group">
+				<span class="input-group-addon"><span class="glyphicon glyphicon-filter"></span></span>
+				<input class="form-control input-sm" type="search" ng-model="recordQuery" placeholder="Filter Student">
+			</div>
+		</div>
+
+		<div class="table-responsive">
+			<table class="table">
+				<thead>
+					<tr>
+						<th class="table-heading">#</th>
+						<th ng-repeat="field in fields" ng-click="sort(recordFields)" class="table-heading">
+							<attr ng-if="field != 'course'">{{ field }}</attr>
+							<attr ng-if="field == 'course'">CLASS</attr>
+						</th>
+						<th>&nbsp;</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="student in record | filter: recordQuery">
+						<td>{{ $index+1 }}</td>
+						<td ng-repeat="field in fields">
+							{{ student[field] }}
+						</td>
+						<td>
+							<div class="text-right">
+								<button class="btn btn-default btn-xs" ng-click="markAbsent(student.id)">Mark Absent</button>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<div class="col-md-9" ng-show="!record && !report">
+		Please select Record or Report
+	</div>
 </div>
