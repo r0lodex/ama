@@ -40,6 +40,9 @@ var ama = angular.module('ama',['ngRoute', 'ngResource', 'angularModalService', 
 				controller: 'userCTRL',
 				templateUrl: 'views/users.ng'
 			})
+			.otherwise({
+				redirectTo: '/uniforms'
+			});
 		;
 	})
 
