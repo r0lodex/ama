@@ -10,7 +10,7 @@ var ama = angular.module('ama',['ngRoute', 'ngResource', 'angularModalService', 
 
 		console.log('Welcome! \nAMA Web Application initialized.');
 
-		$rootScope.newStudentForm = function(id, controller) {
+		$rootScope.StudentFORM = function(id, controller) {
 			ModalService.showModal({
 				templateUrl: 'views/modals/student.modal',
 				controller: (controller) ? controller : "newStudentCTRL",
@@ -40,6 +40,9 @@ var ama = angular.module('ama',['ngRoute', 'ngResource', 'angularModalService', 
 				controller: 'userCTRL',
 				templateUrl: 'views/users.ng'
 			})
+			.otherwise({
+				redirectTo: '/uniforms'
+			});
 		;
 	})
 

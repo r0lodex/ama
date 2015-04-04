@@ -10,6 +10,9 @@ angular.module('ama')
 
 // <-- end navigation
 
+/**********************************************************/
+
+
 // == UNIFORM CONTROLLER
 // -------------------------------
 .controller('uniformCTRL', function($scope) {
@@ -17,6 +20,8 @@ angular.module('ama')
 })
 
 // <-- end uniform
+
+/**********************************************************/
 
 // == STUDENT CONTROLLER
 // -------------------------------
@@ -39,7 +44,7 @@ angular.module('ama')
 
 		// View/Edit Student
 		$scope.showStudent = function(id) {
-			$rootScope.newStudentForm(id, 'viewStudentCTRL');
+			$rootScope.StudentFORM(id, 'viewStudentCTRL');
 		};
 
 	})
@@ -52,7 +57,7 @@ angular.module('ama')
 			name : '',
 			ic : '',
 			matrix : '',
-			uniform : 1, // Defaults to 1
+			uniform : '1',
 			course : ''
 		})
 
@@ -95,6 +100,9 @@ angular.module('ama')
 // <-- end student
 
 
+/**********************************************************/
+
+
 // == USER CONTROLLER
 // -------------------------------
 .controller('userCTRL', function($scope) {
@@ -102,3 +110,6 @@ angular.module('ama')
 })
 
 // <-- end user
+
+/**********************************************************/
+

@@ -12,16 +12,17 @@
 					<form-field record="student" field="course" live="false" required="true"></form-field>
 					<div class="form-group">
 						<label>Uniform</label>
-						<select class="form-control" required ng-model="student.uniform">
-							<option ng-repeat="uniform in uniforms" value="{{ uniform.id }}">{{ uniform.name }}</option>
-						</select>
+						<select class="form-control" required ng-model="student.uniform" ng-options="uniform.id as uniform.name for uniform in uniforms"></select>
 					</div>
 				</form>
 			</div>
-			<div class="modal-footer text-center">
-				<button class="btn btn-primary btn-sm" ng-click="addStudent()" type="button">Add Student</button>
-				<button ng-show="editing" class="btn btn-danger btn-sm" ng-click="deleteStudent()" type="button">Delete</button>
-				<button class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+			<div class="modal-footer">
+				<div class="center-block">
+					<button ng-show="editing" class="btn btn-primary btn-sm" ng-click="addStudent()" type="button">Update</button>
+					<button ng-show="!editing" class="btn btn-primary btn-sm" ng-click="addStudent()" type="button">Add Student</button>
+					<button ng-show="editing" class="btn btn-danger btn-sm" ng-click="deleteStudent()" type="button">Delete</button>
+					<button class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+				</div>
 			</div>
 		</div>
 	</div>
