@@ -15,11 +15,7 @@ switch($method) {
 					$qry->execute($data);
 					$rows = $qry->fetchAll(PDO::FETCH_ASSOC);
 					$dbc = null;
-					if(sizeof($rows) > 1) {
-						$out = $rows;
-					}else{
-						$out = $rows[0];
-					}
+					$out = $rows;
 				break;
 
 				case 'record':
@@ -27,9 +23,10 @@ switch($method) {
 					$sql = "SELECT * FROM uniform WHERE accessKey=:a";
 					$dbc = Database();
 					$qry = $dbc->prepare($sql);
-					$res = $qry->execute($data);
-					if(!$res){
+					$qry->execute($data);
+					if(!$qry->rowCount()){
 						header('HTTP/1.1 401 Unauthorized', true, 401);
+						exit;
 					}
 
 					$data = array('a'=>$request[1]);
@@ -38,11 +35,7 @@ switch($method) {
 					$qry->execute($data);
 					$rows = $qry->fetchAll(PDO::FETCH_ASSOC);
 					$dbc = null;
-					if(sizeof($rows) > 1) {
-						$out = $rows;
-					}else{
-						$out = $rows[0];
-					}
+					$out = $rows;
 				break;
 			}
 		}else{
