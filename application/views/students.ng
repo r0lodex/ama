@@ -24,7 +24,8 @@
 				<th ng-repeat="field in fields" ng-click="sort(field)" class="table-heading">
 					<span ng-show="sort.field === field && !sort.order" class="icon icon-circle-down"></span>
 					<span ng-show="sort.field === field && sort.order" class="icon icon-circle-up"></span>
-					<attr>{{ field }}</attr>
+					<attr ng-if="field != 'course'">{{ field }}</attr>
+					<attr ng-if="field == 'course'">CLASS</attr>
 				</th>
 			</tr>
 		</thead>
