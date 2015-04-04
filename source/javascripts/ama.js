@@ -112,8 +112,15 @@ var ama = angular.module('ama',['ngRoute', 'ngResource', 'angularModalService', 
 	})
 
 	.factory('UniformReport', function($resource) {
-		return $resource('../backend/router.php/uniform/:id/absent', { id: '@id'}, {
+		return $resource('../backend/router.php/uniform/:id/report', { id: '@id'}, {
 			update: { method: 'PUT' }
+		})
+	})
+
+	.factory('UniformRecord', function($resource) {
+		return $resource('../backend/router.php/uniform/:id/record?accessKey=:accessKey', { id: '@id' }, {
+			'get': { isArray: true },
+			'update': { method: 'PUT' }
 		})
 	})
 
