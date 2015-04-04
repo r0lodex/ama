@@ -6,10 +6,10 @@ switch($method) {
 			switch($request[2]) {
 				case 'absent':
 				$data = array('id'=>$request[1]);
-					$sql = "SELECT stdn.name, stdn.matrix, stdn.course, (COUNT(abst.student_id)) AS absent_count, 
-					(COUNT(abst.student_id) * unfm.credit) AS absent_credit  FROM absent abst 
-					JOIN student stdn ON stdn.id=abst.student_id JOIN uniform unfm ON unfm.id=abst.uniform_id 
-					WHERE abst.uniform_id=:id GROUP BY abst.student_id";
+					$sql = "SELECT stdn.name, stdn.matrix, stdn.course, (COUNT(abst.studentId)) AS absent_count, 
+					(COUNT(abst.studentId) * unfm.credit) AS absent_credit  FROM absent abst 
+					JOIN student stdn ON stdn.id=abst.studentId JOIN uniform unfm ON unfm.id=abst.uniformId 
+					WHERE abst.uniformId=:id GROUP BY abst.studentId";
 					$dbc = Database();
 					$qry = $dbc->prepare($sql);
 					$qry->execute($data);
@@ -23,9 +23,17 @@ switch($method) {
 				break;
 
 				case 'record':
+					$data = array('a'=>$_GET['accessKey']);
+					$sql = "SELECT * FROM uniform WHERE accessKey=:a";
+					$dbc = Database();
+					$qry = $dbc->prepare($sql);
+					$res = $qry->execute($data);
+					if(!$res){
+						header('HTTP/1.1 401 Unauthorized', true, 401);
+					}
+
 					$data = array('a'=>$request[1]);
 					$sql = "SELECT * FROM student WHERE uniform=:a";
-					$dbc = Database();
 					$qry = $dbc->prepare($sql);
 					$qry->execute($data);
 					$rows = $qry->fetchAll(PDO::FETCH_ASSOC);
@@ -60,7 +68,7 @@ switch($method) {
 				$data[$k] = $v[0];
 			}
 		}
-		$sql ="INSERT INTO uniform (name, credit) VALUES (:name, :credit)";
+		$sql ="INSERT INTO uniform (name, credit,accessKey) VALUES (:name, :credit, :accessKey)";
 		$dbc = Database();
 		$qry = $dbc->prepare($sql);
 		$qry->execute($data);
@@ -74,7 +82,7 @@ switch($method) {
 			}
 		}
 		$data['id'] = $request[1];
-		$sql ="UPDATE uniform SET name=:name, credit=:credit WHERE id=:id";
+		$sql ="UPDATE uniform SET name=:name, credit=:credit, accessKey=:accessKey WHERE id=:id";
 		$dbc = Database();
 		$qry = $dbc->prepare($sql);
 		$qry->execute($data);

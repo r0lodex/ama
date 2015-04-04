@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50541
 File Encoding         : 65001
 
-Date: 2015-04-04 23:01:00
+Date: 2015-04-05 01:06:27
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -21,18 +21,23 @@ SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS `absent`;
 CREATE TABLE `absent` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `student_id` int(11) DEFAULT NULL,
-  `uniform_id` int(11) DEFAULT NULL,
+  `studentId` int(11) DEFAULT NULL,
+  `uniformId` int(11) DEFAULT NULL,
   `day` varchar(11) DEFAULT NULL,
-  `time` varchar(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=16384;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=16384;
 
 -- ----------------------------
 -- Records of absent
 -- ----------------------------
-INSERT INTO `absent` VALUES ('1', '1', '2', '25/03/2015', '1427263200');
-INSERT INTO `absent` VALUES ('2', '2', '3', '25/03/2015', '1427263200');
+INSERT INTO `absent` VALUES ('1', '1', '2', '25/03/2015');
+INSERT INTO `absent` VALUES ('2', '2', '3', '25/03/2015');
+INSERT INTO `absent` VALUES ('3', '1', '2', null);
+INSERT INTO `absent` VALUES ('4', '1', '2', null);
+INSERT INTO `absent` VALUES ('5', '1', '2', null);
+INSERT INTO `absent` VALUES ('6', '2', '3', null);
+INSERT INTO `absent` VALUES ('7', '3', '3', null);
+INSERT INTO `absent` VALUES ('8', '2', '3', null);
 
 -- ----------------------------
 -- Table structure for student
@@ -119,7 +124,7 @@ INSERT INTO `student` VALUES ('65', 'NUR NAZWA ATALIA BINTI DAUD', null, '25DET1
 INSERT INTO `student` VALUES ('66', 'MUHAMMAD AMIN BIN NAJAMUDIN', null, '25DET14F1017', null, 'DET2A');
 INSERT INTO `student` VALUES ('67', 'MUHAMMAD FARIS AIZAT BIN IKHWAN', null, '25DET14F1018', null, 'DET2A');
 INSERT INTO `student` VALUES ('68', 'AMIRUL HAKIM BIN JORARI', null, '25DET14F1019', null, 'DET2A');
-INSERT INTO `student` VALUES ('69', 'ABDUL RASYID BIN ABDUL RAHIM', null, '25DET14F1020', null, 'DET2A');
+INSERT INTO `student` VALUES ('69', 'ABDUL RASYID BIN ABDUL RAHIM', '1', '25DET14F1020', '2', 'DET2A');
 INSERT INTO `student` VALUES ('70', 'MUAZ NAJMI BIN SHUHADI', null, '25DET14F1021', null, 'DET2A');
 INSERT INTO `student` VALUES ('71', 'MUHAMMAD AMIRUL BIN RAHIMAN', null, '25DET14F1022', null, 'DET2A');
 INSERT INTO `student` VALUES ('72', 'AHMAD IZZUDDIN BIN ABU SAMAH', null, '25DET14F1023', null, 'DET2A');
@@ -358,16 +363,17 @@ CREATE TABLE `uniform` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT NULL,
   `credit` int(11) DEFAULT NULL,
+  `accessKey` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=8192;
 
 -- ----------------------------
 -- Records of uniform
 -- ----------------------------
-INSERT INTO `uniform` VALUES ('1', 'Pengakap', '3');
-INSERT INTO `uniform` VALUES ('2', 'Bomba', '2');
-INSERT INTO `uniform` VALUES ('3', 'Polis', '3');
-INSERT INTO `uniform` VALUES ('4', 'Ambulans', '2');
+INSERT INTO `uniform` VALUES ('1', 'Pengakap', '3', null);
+INSERT INTO `uniform` VALUES ('2', 'Bomba', '2', null);
+INSERT INTO `uniform` VALUES ('3', 'Polis', '3', null);
+INSERT INTO `uniform` VALUES ('4', 'Ambulans', '2', null);
 
 -- ----------------------------
 -- Table structure for user

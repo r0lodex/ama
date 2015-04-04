@@ -6,7 +6,7 @@ if(!isset($_SESSION)) {	session_start(); }
 include('database.php');
 
 // system config
-//date_default_timezone_set('Asia/Kuala_lumpur');
+date_default_timezone_set('Asia/Kuala_lumpur');
 
 // inspect incoming request
 $method = $_SERVER['REQUEST_METHOD'];
