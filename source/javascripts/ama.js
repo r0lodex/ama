@@ -8,7 +8,7 @@ var ama = angular.module('ama',['ngRoute', 'ngResource', 'angularModalService', 
 // INITIALIZATION
 	.run(function($rootScope, ModalService, Student, Uniform) {
 
-		console.log('Welcome! \nAMA Web Application initialized.');
+		console.log('Welcome! \nCAS Web Application initialized.');
 
 		$rootScope.ModalForm = function(type, id) {
 

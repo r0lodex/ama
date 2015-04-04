@@ -22,7 +22,7 @@ if(!isset($_SESSION['authorized'])) {header('Location:../');}
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#"><span class="icon icon-logo"></span> AMA</a>
+				<a class="navbar-brand" href="#"><span class="icon icon-logo"></span> CAS</a>
 			</div>
 
 			<!-- Dashboard Navigation -->
