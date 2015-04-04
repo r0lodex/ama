@@ -20,7 +20,7 @@ switch($method) {
 	case 'POST':
 		foreach($data as $k => $v) {
 			if(is_array($v)) {
-				$data[$k] = $v[0];
+				$data[$k] = $v;
 			}
 		}
 		$sql ="INSERT INTO user (username, password, name, email, phone, type) VALUES (:username, :password, :name, :email, :phone, 'user')";
