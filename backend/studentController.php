@@ -3,9 +3,10 @@
 switch($method) {
 	case 'GET':
 		$data['id'] = (isset($request[1])) ? $request[1] : null;
-		$sql = "SELECT std.id,std.name,std.ic,std.matrix,uni.name AS uniform,std.course FROM student std JOIN uniform uni ON uni.id=std.uniform";
-		if($data['id'] != null){
-			$sql .= " WHERE std.id=:id";
+		if($data['id'] == null){
+			$sql = "SELECT std.id,std.name,std.ic,std.matrix,uni.name AS uniform,std.course FROM student std JOIN uniform uni ON uni.id=std.uniform";
+		}else{
+			$sql = "SELECT * FROM student WHERE id=:id";
 			$sql2 = "SELECT * FROM uniform";
 		}
 		$dbc = Database();
