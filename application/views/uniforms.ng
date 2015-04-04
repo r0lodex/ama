@@ -32,7 +32,7 @@
 		</div>
 
 		<div class="table-responsive">
-			<table class="table">
+			<table class="table table-bordered table-condensed">
 				<thead>
 					<tr>
 						<th class="table-heading">#</th>
@@ -50,7 +50,7 @@
 							{{ student[field] }}
 						</td>
 						<td>
-							<div class="text-right">
+							<div class="text-center">
 								<button class="btn btn-default btn-xs" ng-click="markAbsent(student.id)">Mark Absent</button>
 							</div>
 						</td>
