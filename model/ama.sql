@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50541
 File Encoding         : 65001
 
-Date: 2015-04-04 08:00:30
+Date: 2015-04-04 22:32:34
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -54,7 +54,7 @@ CREATE TABLE `student` (
 INSERT INTO `student` VALUES ('1', 'syukri', '111', '222', '1', 'Pendidikan');
 INSERT INTO `student` VALUES ('2', 'kamal', '333', '444', '2', 'Kejururawatan');
 INSERT INTO `student` VALUES ('3', 'Manaf', '555', '666', '3', 'Kejuruteraan');
-INSERT INTO `student` VALUES ('4', 'siti', '777', '888', '1', 'JTMK');
+INSERT INTO `student` VALUES ('4', 'Siti', '777', '888', '1', 'JTMK');
 
 -- ----------------------------
 -- Table structure for uniform
@@ -63,16 +63,17 @@ DROP TABLE IF EXISTS `uniform`;
 CREATE TABLE `uniform` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT NULL,
+  `credit` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=8192;
 
 -- ----------------------------
 -- Records of uniform
 -- ----------------------------
-INSERT INTO `uniform` VALUES ('1', 'Pengakap');
-INSERT INTO `uniform` VALUES ('2', 'Bomba');
-INSERT INTO `uniform` VALUES ('3', 'Polis');
-INSERT INTO `uniform` VALUES ('4', 'Ambulans');
+INSERT INTO `uniform` VALUES ('1', 'Pengakap', '3');
+INSERT INTO `uniform` VALUES ('2', 'Bomba', '2');
+INSERT INTO `uniform` VALUES ('3', 'Polis', '3');
+INSERT INTO `uniform` VALUES ('4', 'Ambulans', '2');
 
 -- ----------------------------
 -- Table structure for user

@@ -23,7 +23,7 @@ switch($method) {
 				$data[$k] = $v[0];
 			}
 		}
-		$sql ="INSERT INTO uniform (name) VALUES (:name)";
+		$sql ="INSERT INTO uniform (name, credit) VALUES (:name, :credit)";
 		$dbc = Database();
 		$qry = $dbc->prepare($sql);
 		$qry->execute($data);
@@ -37,7 +37,7 @@ switch($method) {
 			}
 		}
 		$data['id'] = $request[1];
-		$sql ="UPDATE uniform SET name=:name WHERE id=:id";
+		$sql ="UPDATE uniform SET name=:name, credit=:credit WHERE id=:id";
 		$dbc = Database();
 		$qry = $dbc->prepare($sql);
 		$qry->execute($data);
