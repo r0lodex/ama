@@ -6,6 +6,7 @@
 				<form name="new_uniform_form" novalidate>
 					<form-field record="uniform" field="name" live="false" required="true"></form-field>
 					<form-field record="uniform" field="credit" live="false" required="true"></form-field>
+					<form-field record="uniform" field="accessKey" live="false" required="true"></form-field>
 				</form>
 			</div>
 			<div class="modal-footer">
