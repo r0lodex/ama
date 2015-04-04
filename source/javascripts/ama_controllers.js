@@ -10,6 +10,9 @@ angular.module('ama')
 
 // <-- end navigation
 
+/**********************************************************/
+
+
 // == UNIFORM CONTROLLER
 // -------------------------------
 .controller('uniformCTRL', function($scope) {
@@ -17,6 +20,8 @@ angular.module('ama')
 })
 
 // <-- end uniform
+
+/**********************************************************/
 
 // == STUDENT CONTROLLER
 // -------------------------------
@@ -95,6 +100,9 @@ angular.module('ama')
 // <-- end student
 
 
+/**********************************************************/
+
+
 // == USER CONTROLLER
 // -------------------------------
 .controller('userCTRL', function($scope) {
@@ -102,3 +110,6 @@ angular.module('ama')
 })
 
 // <-- end user
+
+/**********************************************************/
+
