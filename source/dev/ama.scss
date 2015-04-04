@@ -71,3 +71,11 @@ form label {
 }
 
 a:hover { cursor: pointer }
+
+.empty-record {
+	border: 1px dashed #CCC;
+	padding: 100px 50px;
+	text-align: center;
+	min-height: 500px;
+	color: #CCC;
+}
