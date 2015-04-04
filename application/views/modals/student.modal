@@ -1,9 +1,7 @@
 <div class="modal">
 	<div class="modal-dialog modal-sm">
 		<div class="modal-content">
-			<div class="modal-header text-center">
-				<h3 class="text-uppercase">New Student</h3>
-			</div>
+			<h5 class="text-center text-uppercase light" style="padding: 5px"><k ng-if="editing">Edit</k><k ng-if="!editing">New</k> Student</h5>
 			<div class="modal-body">
 				<form name="new_student_form" novalidate>
 					<form-field record="student" field="name" live="false" required="true"></form-field>

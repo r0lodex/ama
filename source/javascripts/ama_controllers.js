@@ -44,12 +44,12 @@ angular.module('ama')
 
 		// View/Edit Student
 		$scope.showStudent = function(id) {
-			$rootScope.StudentFORM(id, 'viewStudentCTRL');
+			$rootScope.ModalForm('student', id);
 		};
 
 	})
 
-	.controller('newStudentCTRL', function($scope, Student, Uniform, studentData) {
+	.controller('newStudentCTRL', function($scope, Student, Uniform) {
 
 		$scope.uniforms = Uniform.query();
 
@@ -73,10 +73,10 @@ angular.module('ama')
 		}
 	})
 
-	.controller('viewStudentCTRL', function($scope, Student, Uniform, studentData) {
+	.controller('viewStudentCTRL', function($scope, Student, Uniform, modalData) {
 		$scope.editing = true;
 		$scope.uniforms = Uniform.query();
-		$scope.student = studentData;
+		$scope.student = modalData;
 
 		$scope.addStudent = function() {
 			if ($scope.new_student_form.$invalid) {
