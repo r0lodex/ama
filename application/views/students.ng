@@ -2,11 +2,11 @@
 <h3>
 	<span class="small icon icon-address-book"></span> 
 	<k class="light">STUDENTS</k><br>
-	<small class="small">Click on a student to view its detail.</small>
+	
 </h3>
 <div class="form-inline">
 	<div class="form-group">
-		<button class="btn btn-default btn-sm" ng-click="newStudent()"><span class="glyphicon glyphicon-plus"></span> Add Student</button>
+		<button class="btn btn-default btn-sm" ng-click="newStudentForm()"><span class="glyphicon glyphicon-plus"></span> Add Student</button>
 	</div>
 	<div class="form-group">
 		<div class="input-group">
