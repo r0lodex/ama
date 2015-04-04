@@ -5847,3 +5847,7 @@ button.close {
 
 .table-hover:hover {
   cursor: pointer; }
+
+form label {
+  font-weight: normal;
+  color: #666; }
