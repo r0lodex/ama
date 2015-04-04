@@ -1,12 +1,26 @@
 var ama = angular.module('ama',['ngRoute', 'ngResource', 'angularModalService', 'ngMessages'])
-// MODULES :                         ^           ^                  ^
-// Routing Service ------------------^           ^                  ^
-// Data Resource Service ------------------------^                  ^
-// Pop-up Modal Service --------------------------------------------^
+// MODULES :                         ^           ^                  ^                  ^
+// Routing Service ------------------^           ^                  ^                  ^
+// Data Resource Service ------------------------^                  ^                  ^
+// Pop-up Modal Service --------------------------------------------^                  ^
+// Broadcast Message Service ----------------------------------------------------------^
 
 // INITIALIZATION
-	.run(function($rootScope) {
+	.run(function($rootScope, ModalService, Student, Uniform) {
+
 		console.log('Welcome! \nAMA Web Application initialized.');
+
+		$rootScope.newStudentForm = function(id, controller) {
+			ModalService.showModal({
+				templateUrl: 'views/modals/student.modal',
+				controller: (controller) ? controller : "newStudentCTRL",
+				inputs: {
+					studentData: (id) ? Student.get({ id: id }) : false,
+				}
+			}).then(function(modal) {
+				modal.element.modal();
+			})
+		};
 	})
 
 // ROUTE CONFIGURATION
@@ -72,7 +86,13 @@ var ama = angular.module('ama',['ngRoute', 'ngResource', 'angularModalService', 
 // DATA FACTORIES
 	.factory('Student', function($resource) {
 		return $resource('../backend/router.php/student/:id', { id: '@id'}, {
-			'update': { method: 'PUT' }
+			update: { method: 'PUT' }
+		})
+	})
+
+	.factory('Uniform', function($resource) {
+		return $resource('../backend/router.php/uniform/:id', { id: '@id'}, {
+			update: { method: 'PUT' }
 		})
 	})
 
