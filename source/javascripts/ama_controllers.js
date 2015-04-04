@@ -15,18 +15,39 @@ angular.module('ama')
 
 // == UNIFORM CONTROLLER
 // -------------------------------
-	.controller('uniformCTRL', function($rootScope, $scope, Uniform) {
+	.controller('uniformCTRL', function($rootScope, $scope, Uniform, UniformRecord, UniformReport) {
 		$scope.uniforms = Uniform.query();
+
 		$scope.showUniform = function(id) {
 			$rootScope.ModalForm('uniform', id);
 		}
+
+		$scope.fields = ['name', 'course', 'matrix']
+
+		$scope.createUniformRecord = function(id) {
+			var ak = prompt('Please enter the access key');
+			if($.trim(ak) != '') {
+				$scope.uniformName = $scope.uniforms[id].name;
+				$scope.date = new Date();
+				$scope.record = UniformRecord.get({ id: id, accessKey: ak },
+					function() {}, function(response) {
+						if (response.status === 401 ) {
+							alert('Access Denied');
+						}
+					})
+			} else {
+				alert('Access key not specified. We have denied your access.');
+			}
+		}
+		$scope.uniformReport = function(id) {}
 	})
 
 	.controller('newUniformCTRL', function($scope, modalData, Uniform) {
 
 		$scope.uniform = new Uniform({
 			name: '',
-			credit: ''
+			credit: '',
+			accessKey: ''
 		})
 
 		$scope.addUniform = function() {
