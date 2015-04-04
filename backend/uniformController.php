@@ -12,7 +12,7 @@ switch($method) {
 		if($data['id'] != null) {
 			$out = array('uniform' => $rows[0]);
 		}else{
-			$out = array('uniform' => $rows);
+			$out = $rows;
 		}
 		echo json_encode($out);
 	break;

@@ -16,9 +16,9 @@ switch($method) {
 		if(isset($sql2)) {
 			$qry = $dbc->query($sql2);
 			$res = $qry->fetchAll(PDO::FETCH_ASSOC);
-			$out = array('student' => $rows[0], 'uniform' => $res);
+			$out = $rows[0];
 		}else{
-			$out = array('student' => $rows);
+			$out = $rows;
 		}
 		$dbc = null;
 		echo json_encode($out);
