@@ -57,7 +57,7 @@ angular.module('ama')
 			name : '',
 			ic : '',
 			matrix : '',
-			uniform : 1, // Defaults to 1
+			uniform : '1',
 			course : ''
 		})
 
