@@ -23,7 +23,8 @@ switch($method) {
 				$data[$k] = $v[0];
 			}
 		}
-		$sql ="INSERT INTO absent (student_id, uniform_id, day, time) VALUES (:student_id, :uniform_id, :day, :time)";
+		$data['day'] = date('d/m/Y');
+		$sql ="INSERT INTO absent (studentId,uniformId,day) SELECT id,uniform,:day from student WHERE id=:id AND NOT EXISTS(SELECT * FROM absent WHERE studentId=:d)";
 		$dbc = Database();
 		$qry = $dbc->prepare($sql);
 		$qry->execute($data);
@@ -36,8 +37,9 @@ switch($method) {
 				$data[$k] = $v[0];
 			}
 		}
+		$data['day'] = date('d/m/Y');
 		$data['id'] = $request[1];
-		$sql ="UPDATE absent SET student_id=:student_id, uniform_id=:uniform_id, day=:day, time=:time WHERE id=:id";
+		$sql ="UPDATE absent SET studentId=:studentId, uniformId=:uniformId, day=:day WHERE id=:id";
 		$dbc = Database();
 		$qry = $dbc->prepare($sql);
 		$qry->execute($data);

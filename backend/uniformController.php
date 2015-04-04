@@ -4,10 +4,10 @@ switch($method) {
 	case 'GET':
 		if(isset($request[2])) {
 			switch($request[2]) {
-				case 'absent':
+				case 'report':
 				$data = array('id'=>$request[1]);
 					$sql = "SELECT stdn.name, stdn.matrix, stdn.course, (COUNT(abst.studentId)) AS absent_count, 
-					(COUNT(abst.studentId) * unfm.credit) AS absent_credit  FROM absent abst 
+					(COUNT(abst.studentId) * unfm.credit) AS absent_credit FROM absent abst 
 					JOIN student stdn ON stdn.id=abst.studentId JOIN uniform unfm ON unfm.id=abst.uniformId 
 					WHERE abst.uniformId=:id GROUP BY abst.studentId";
 					$dbc = Database();

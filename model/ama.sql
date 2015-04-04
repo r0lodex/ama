@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50541
 File Encoding         : 65001
 
-Date: 2015-04-05 01:06:27
+Date: 2015-04-05 01:44:00
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -25,19 +25,20 @@ CREATE TABLE `absent` (
   `uniformId` int(11) DEFAULT NULL,
   `day` varchar(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=16384;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=16384;
 
 -- ----------------------------
 -- Records of absent
 -- ----------------------------
 INSERT INTO `absent` VALUES ('1', '1', '2', '25/03/2015');
 INSERT INTO `absent` VALUES ('2', '2', '3', '25/03/2015');
-INSERT INTO `absent` VALUES ('3', '1', '2', null);
-INSERT INTO `absent` VALUES ('4', '1', '2', null);
-INSERT INTO `absent` VALUES ('5', '1', '2', null);
-INSERT INTO `absent` VALUES ('6', '2', '3', null);
-INSERT INTO `absent` VALUES ('7', '3', '3', null);
-INSERT INTO `absent` VALUES ('8', '2', '3', null);
+INSERT INTO `absent` VALUES ('3', '1', '2', '25/03/2015');
+INSERT INTO `absent` VALUES ('4', '1', '2', '25/03/2015');
+INSERT INTO `absent` VALUES ('5', '1', '2', '25/03/2015');
+INSERT INTO `absent` VALUES ('6', '2', '3', '25/03/2015');
+INSERT INTO `absent` VALUES ('7', '3', '3', '25/03/2015');
+INSERT INTO `absent` VALUES ('8', '2', '3', '25/03/2015');
+INSERT INTO `absent` VALUES ('9', '4', '1', '31/03/2015');
 
 -- ----------------------------
 -- Table structure for student
