@@ -34,7 +34,7 @@ if(!isset($_SESSION['authorized'])) {header('Location:../');}
 
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#/users"><span class="icon icon-users"></span> Users</a></li>
-					<li><a href="../backend/router.php/logout">Logout</a></li>
+					<li><a href="../backend/router.php/auth/logout">Logout</a></li>
 				</ul>
 			</div>
 		</div>

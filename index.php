@@ -15,7 +15,7 @@ if(isset($_SESSION['authorized'])) {header('Location:application');}
 				</h1>
 				<p>Co-Curiculum Attendance System</p>
 			</div>
-			<form id="login" method="POST" action="backend/router.php/login">
+			<form id="login" method="POST" action="backend/router.php/auth/login">
 				<div class="form-group">
 					<div class="input-group">
 						<span class="input-group-addon"><span class="icon icon-user2"></span></span>

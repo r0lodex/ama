@@ -4,17 +4,24 @@ switch($method) {
 	case 'GET':
 		$data['id'] = (isset($request[1])) ? $request[1] : null;
 		$sql = "SELECT std.id,std.name,std.ic,std.matrix,uni.name AS uniform,std.course FROM student std JOIN uniform uni ON uni.id=std.uniform";
-		$sql.= ($data['id'] != null) ? " WHERE std.id=:id" : " ";
+		if($data['id'] != null){
+			$sql .= " WHERE std.id=:id";
+			$sql2 = "SELECT * FROM uniform";
+		}
 		$dbc = Database();
 		$qry = $dbc->prepare($sql);
 		$qry->execute($data);
 		$rows = $qry->fetchAll(PDO::FETCH_ASSOC);
-		$dbc = null;
-		if(sizeof($rows) < 2) {
-			echo json_encode($rows[0]);
+
+		if(isset($sql2)) {
+			$qry = $dbc->query($sql2);
+			$res = $qry->fetchAll(PDO::FETCH_ASSOC);
+			$out = array('student' => $rows[0], 'uniform' => $res);
 		}else{
-			echo json_encode($rows);
+			$out = array('student' => $rows);
 		}
+		$dbc = null;
+		echo json_encode($out);
 	break;
 
 	case 'POST':

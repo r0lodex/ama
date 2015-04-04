@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50541
 File Encoding         : 65001
 
-Date: 2015-04-03 22:29:18
+Date: 2015-04-04 08:00:30
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -23,13 +23,16 @@ CREATE TABLE `absent` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `student_id` int(11) DEFAULT NULL,
   `uniform_id` int(11) DEFAULT NULL,
-  `session` int(11) DEFAULT NULL,
+  `day` varchar(11) DEFAULT NULL,
+  `time` varchar(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=16384;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=16384;
 
 -- ----------------------------
 -- Records of absent
 -- ----------------------------
+INSERT INTO `absent` VALUES ('1', '1', '2', '25/03/2015', '1427263200');
+INSERT INTO `absent` VALUES ('2', '2', '3', '25/03/2015', '1427263200');
 
 -- ----------------------------
 -- Table structure for student
@@ -43,14 +46,15 @@ CREATE TABLE `student` (
   `uniform` varchar(50) DEFAULT NULL,
   `course` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=8192;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=8192;
 
 -- ----------------------------
 -- Records of student
 -- ----------------------------
 INSERT INTO `student` VALUES ('1', 'syukri', '111', '222', '1', 'Pendidikan');
-INSERT INTO `student` VALUES ('2', 'kamal', '444', '555', '2', 'Kejururawatan');
-INSERT INTO `student` VALUES ('3', 'Manaf', '777', '888', '3', 'Kejuruteraan');
+INSERT INTO `student` VALUES ('2', 'kamal', '333', '444', '2', 'Kejururawatan');
+INSERT INTO `student` VALUES ('3', 'Manaf', '555', '666', '3', 'Kejuruteraan');
+INSERT INTO `student` VALUES ('4', 'siti', '777', '888', '1', 'JTMK');
 
 -- ----------------------------
 -- Table structure for uniform

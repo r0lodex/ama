@@ -5,6 +5,9 @@ if(!isset($_SESSION)) {	session_start(); }
 // database connection function
 include('database.php');
 
+// system config
+//date_default_timezone_set('Asia/Kuala_lumpur');
+
 // inspect incoming request
 $method = $_SERVER['REQUEST_METHOD'];
 $request = explode("/", substr(@$_SERVER['PATH_INFO'], 1));
@@ -23,7 +26,6 @@ switch($request[0]) {
 
 	case 'absent':
 		// http://<domain>/backend/router.php/absent
-		// 
 		include 'absentController.php';
 	break;
 
@@ -37,25 +39,14 @@ switch($request[0]) {
 		include 'uniformController.php';
 	break;
 
-	case 'login':
-		$sql = "SELECT * FROM user WHERE username=:username AND password=:password";
-		$dbc = Database();
-		$qry = $dbc->prepare($sql);
-		$qry->execute($_POST);
-		$row = $qry->fetch(PDO::FETCH_ASSOC);
-		$dbc = null;
-		if($row) {
-			$_SESSION['authorized'] = $row['type'];
-			header('Location: ../../application');
-		}else{
-			header('Location: ../../');
-		}
+	case 'auth':
+		// http://<domain>/backend/router.php/auth
+		include 'authController.php';
 	break;
 
-	case 'logout':
-		unset($_SESSION);
-		session_destroy();
-		header('Location: ../../');
+	case 'report':
+		// http://<domain>/backend/router.php/report
+		include 'reportController.php';
 	break;
 
 	default:

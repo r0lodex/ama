@@ -9,10 +9,20 @@ switch($method) {
 		$qry->execute($data);
 		$rows = $qry->fetchAll(PDO::FETCH_ASSOC);
 		$dbc = null;
-		echo json_encode($rows);
+		if($data['id'] != null) {
+			$out = array('user'=> $rows[0]);
+		}else{
+			$out = array('user'=> $rows);
+		}
+		echo json_encode($out);
 	break;
 
 	case 'POST':
+		foreach($data as $k => $v) {
+			if(is_array($v)) {
+				$data[$k] = $v[0];
+			}
+		}
 		$sql ="INSERT INTO user (username, password, name, email, phone, type) VALUES (:username, :password, :name, :email, :phone, 'user')";
 		$dbc = Database();
 		$qry = $dbc->prepare($sql);
@@ -21,6 +31,11 @@ switch($method) {
 	break;
 
 	case 'PUT':
+		foreach($data as $k => $v) {
+			if(is_array($v)) {
+				$data[$k] = $v[0];
+			}
+		}
 		$data['id'] = $request[1];
 		$sql ="UPDATE user SET username=:username, password=:password, name=:name, email=:email, phone=:phone WHERE id=:id";
 		$dbc = Database();
