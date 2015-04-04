@@ -15,8 +15,8 @@ angular.module('ama')
 
 // == UNIFORM CONTROLLER
 // -------------------------------
-.controller('uniformCTRL', function($scope) {
-	console.log('Uniform');
+.controller('uniformCTRL', function($rootScope, $scope, Uniform) {
+	$scope.uniforms = Uniform.query();
 })
 
 // <-- end uniform
