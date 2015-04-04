@@ -111,6 +111,12 @@ var ama = angular.module('ama',['ngRoute', 'ngResource', 'angularModalService', 
 		})
 	})
 
+	.factory('UniformReport', function($resource) {
+		return $resource('../backend/router.php/uniform/:id/absent', { id: '@id'}, {
+			update: { method: 'PUT' }
+		})
+	})
+
 // FILTERS
 	.filter('capitalize', function() {
 		// Believe it or not, Angular doesn't have this filter built-in!
