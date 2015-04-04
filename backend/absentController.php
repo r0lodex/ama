@@ -10,9 +10,9 @@ switch($method) {
 		$rows = $qry->fetchAll(PDO::FETCH_ASSOC);
 		$dbc = null;
 		if($data['id'] != null) {
-			$out = array('absent' => $rows[0]);
+			$out = $rows[0];
 		}else{
-			$out = array('absent' => $rows);
+			$out = $rows;
 		}
 		echo json_encode($out);
 	break;

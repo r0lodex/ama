@@ -10,7 +10,7 @@ switch($method) {
 		$rows = $qry->fetchAll(PDO::FETCH_ASSOC);
 		$dbc = null;
 		if($data['id'] != null) {
-			$out = array('uniform' => $rows[0]);
+			$out = $rows[0];
 		}else{
 			$out = $rows;
 		}
