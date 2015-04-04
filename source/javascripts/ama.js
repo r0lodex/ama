@@ -10,17 +10,29 @@ var ama = angular.module('ama',['ngRoute', 'ngResource', 'angularModalService', 
 
 		console.log('Welcome! \nAMA Web Application initialized.');
 
-		$rootScope.StudentFORM = function(id, controller) {
+		$rootScope.ModalForm = function(type, id) {
+
+			var controller = '', modalData;
+
+			switch(type) {
+				case 'student':
+					controller = (id) ? 'viewStudentCTRL':'newStudentCTRL';
+					modalData = (id) ? Student.get({ id:id }) : false;
+				break;
+				case 'uniform':
+					controller = (id) ? 'viewUniformCTRL':'newUniformCTRL';
+					modalData = (id) ? Uniform.get({ id:id }) : false;
+				break;
+			}
+
 			ModalService.showModal({
-				templateUrl: 'views/modals/student.modal',
-				controller: (controller) ? controller : "newStudentCTRL",
-				inputs: {
-					studentData: (id) ? Student.get({ id: id }) : false,
-				}
+				templateUrl: 'views/modals/'+type+'.modal',
+				controller: controller,
+				inputs: { modalData: modalData }
 			}).then(function(modal) {
 				modal.element.modal();
 			})
-		};
+		}
 	})
 
 // ROUTE CONFIGURATION
