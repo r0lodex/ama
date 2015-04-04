@@ -20,6 +20,7 @@
 	<table class="table table-bordered table-hover">
 		<thead>
 			<tr>
+				<th class="table-heading">#</th>
 				<th ng-repeat="field in fields" ng-click="sort(field)" class="table-heading">
 					<span ng-show="sort.field === field && !sort.order" class="icon icon-circle-down"></span>
 					<span ng-show="sort.field === field && sort.order" class="icon icon-circle-up"></span>
@@ -29,6 +30,7 @@
 		</thead>
 		<tbody>
 			<tr ng-click="showStudent(student.id)" ng-repeat="student in students | filter: query | orderBy: sort.field:sort.order">
+				<td>{{ $index+1 }}</td>
 				<td ng-repeat="field in fields">
 					{{ student[field] }}
 				</td>
