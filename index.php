@@ -49,7 +49,15 @@ if(isset($_SESSION['authorized'])) {header('Location:application');}
 	BACKEND (Server)
 	==================
 		1. PHP (PDO)
+			PDO bermaksud php data object.
+			Adalah merupakan modul untuk menyambungkan php code dengan database.
+			PDO adalah module yg terbaru dan diperbaiki berbanding mysql dan mysqlI.
+			Maklumat berkenaan PDO boleh diperolehi melalui php manual
+
 		2. MySQL
+			MySQL adalah sebuah database open source berdasalkan SQL.
+			Database ini boleh di-akses oleh php code menggunakan modul berikut: mysql/mysqli/PDO
+			PDO adalah modul yg disarankan bagi tahun 2015 dan yg mendatang sehingga diberitahu sebaliknya kemudian
 
 	FRONTEND (Browser/Client)
 	=========================
