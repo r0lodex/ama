@@ -39,7 +39,7 @@ angular.module('ama')
 
 		// View/Edit Student
 		$scope.showStudent = function(id) {
-			$rootScope.newStudentForm(id, 'viewStudentCTRL');
+			$rootScope.StudentFORM(id, 'viewStudentCTRL');
 		};
 
 	})
