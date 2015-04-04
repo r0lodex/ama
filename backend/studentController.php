@@ -7,19 +7,16 @@ switch($method) {
 			$sql = "SELECT std.id,std.name,std.ic,std.matrix,uni.name AS uniform,std.course FROM student std JOIN uniform uni ON uni.id=std.uniform";
 		}else{
 			$sql = "SELECT * FROM student WHERE id=:id";
-			$sql2 = "SELECT * FROM uniform";
 		}
 		$dbc = Database();
 		$qry = $dbc->prepare($sql);
 		$qry->execute($data);
 		$rows = $qry->fetchAll(PDO::FETCH_ASSOC);
 
-		if(isset($sql2)) {
-			$qry = $dbc->query($sql2);
-			$res = $qry->fetchAll(PDO::FETCH_ASSOC);
-			$out = $rows[0];
-		}else{
+		if($data['id'] == null) {
 			$out = $rows;
+		}else{
+			$out = $rows[0];
 		}
 		$dbc = null;
 		echo json_encode($out);
