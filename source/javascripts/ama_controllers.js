@@ -33,6 +33,7 @@ angular.module('ama')
 					function() {}, function(response) {
 						if (response.status === 401 ) {
 							alert('Access Denied');
+							delete $scope.record;
 						}
 					})
 			} else {
