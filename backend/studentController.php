@@ -3,20 +3,20 @@
 switch($method) {
 	case 'GET':
 		$data['id'] = (isset($request[1])) ? $request[1] : null;
-		if($data['id'] == null){
-			$sql = "SELECT std.id,std.name,std.ic,std.matrix,uni.name AS uniform,std.course FROM student std JOIN uniform uni ON uni.id=std.uniform";
-		}else{
+		if($data['id'] != null){
 			$sql = "SELECT * FROM student WHERE id=:id";
+		}else{
+			$sql = "SELECT std.id,std.name,std.ic,std.matrix,uni.name AS uniform,std.course FROM student std JOIN uniform uni ON uni.id=std.uniform";
 		}
 		$dbc = Database();
 		$qry = $dbc->prepare($sql);
 		$qry->execute($data);
 		$rows = $qry->fetchAll(PDO::FETCH_ASSOC);
 
-		if($data['id'] == null) {
-			$out = $rows;
-		}else{
+		if($data['id'] != null) {
 			$out = $rows[0];
+		}else{
+			$out = $rows;
 		}
 		$dbc = null;
 		echo json_encode($out);
