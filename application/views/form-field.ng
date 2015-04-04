@@ -1,8 +1,8 @@
 <div class="form-group" ng-form="{{ field }}" ng-class="{ 'has-error': {{ field }}.$dirty && {{ field }}.$invalid }">
-	<label>{{ field | capitalize }} <span ng-if="required">*</span></label>
+	<label>{{ field | capitalize }} <span class="text-warning" ng-if="required">*</span></label>
 	<span ng-switch="required">
-		<input ng-switch-when="true" ng-model="record[field][0]" type="{{ record[field][1] }}" class="form-control" required ng-change="update()" ng-blur="blurUpdate()">
-		<input ng-switch-when="false" ng-model="record[field][0]" type="{{ record[field][1] }}" class="form-control" ng-change="update()" ng-blur="blurUpdate()">
+		<input ng-switch-when="true" ng-model="record[field]" type="text" class="form-control" required ng-change="update()" ng-blur="blurUpdate()">
+		<input ng-switch-when="false" ng-model="record[field]" type="text" class="form-control" ng-change="update()" ng-blur="blurUpdate()">
 	</span>
 <!--
 TODO: Fix this.
