@@ -1,0 +1,20 @@
+<div class="modal">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-body">
+				<h5 class="text-center text-uppercase light" style="padding: 5px">
+					{{ student.report.name }} Absent History <br>
+					<small class="text-muted" style="font-family:'gbook';">{{ student.student.name }}</small>
+				</h5>
+				<ul class="list-group">
+					<li class="list-group-item text-center" ng-repeat="date in absentData" ng-if="date.studentId == student.student.id && date.uniformId == student.report.id">{{ date.day }}</li>
+				</ul>
+			</div>
+			<div class="modal-footer">
+				<div class="center-block">
+					<button class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

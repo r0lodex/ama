@@ -8,7 +8,7 @@ var ama = angular.module('ama',['ngRoute', 'ngResource', 'angularModalService', 
 // Angular Animation Service -----------------------------------------------------------------------------------------------^
 
 // INITIALIZATION
-	.run(function($rootScope, ModalService, Student, Uniform, User) {
+	.run(function($rootScope, ModalService, Student, Uniform, User, Absent) {
 
 		console.log('Welcome! \nCAS Web Application initialized.');
 
@@ -28,6 +28,10 @@ var ama = angular.module('ama',['ngRoute', 'ngResource', 'angularModalService', 
 				case 'uniform':
 					controller = (id) ? 'viewUniformCTRL':'newUniformCTRL';
 					modalData = (id) ? Uniform.get({ id:id }) : false;
+				break;
+				case 'absentHistory':
+					controller = 'absentHistoryCTRL';
+					modalData = { absentData: Absent.get(), student: id }
 				break;
 			}
 
@@ -122,13 +126,15 @@ var ama = angular.module('ama',['ngRoute', 'ngResource', 'angularModalService', 
 
 	.factory('UniformRecord', function($resource) {
 		return $resource('../backend/router.php/uniform/:id/record?accessKey=:accessKey', { id: '@id' }, {
-			get: { isArray: true },
 			update: { method: 'PUT' }
 		})
 	})
 
 	.factory('Absent', function($resource) {
-		return $resource('../backend/router.php/absent')
+		return $resource('../backend/router.php/absent/:id', { id: '@id'}, {
+			get: { isArray: true },
+			update: { method: 'PUT' }
+		})
 	})
 
 // FILTERS
