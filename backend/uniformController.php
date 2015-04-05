@@ -29,13 +29,21 @@ switch($method) {
 						exit;
 					}
 
-					$data = array('a'=>$request[1]);
-					$sql = "SELECT stdn.id, stdn.name, stdn.matrix, abst.id AS aid FROM student stdn LEFT JOIN absent abst ON abst.studentId=stdn.id WHERE stdn.uniform=:a";
+					$data = array('a'=>$request[1], 'b'=>date('d/m/Y'));
+					$sql = "SELECT stdn.* FROM student stdn JOIN absent abst ON abst.studentId=stdn.id 
+							WHERE stdn.uniform=:a AND NOT abst.day=:b";
 					$qry = $dbc->prepare($sql);
 					$qry->execute($data);
 					$rows = $qry->fetchAll(PDO::FETCH_ASSOC);
+					$out['student'] = $rows;
+
+					$data['b'] = date('d/m/Y');
+					$sql = "SELECT * FROM absent WHERE uniformId=:a AND day=:b";
+					$qry = $dbc->prepare($sql);
+					$qry->execute($data);
+					$rows = $qry->fetchAll(PDO::FETCH_ASSOC);
+					$out['absent'] = $rows;
 					$dbc = null;
-					$out = $rows;
 				break;
 			}
 		}else{

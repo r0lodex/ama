@@ -2,17 +2,35 @@
 
 switch($method) {
 	case 'GET':
-		$data['id'] = (isset($request[1])) ? $request[1] : null;
-		$sql = ($data['id'] != null) ? "SELECT * FROM absent WHERE id=:id" : "SELECT * FROM absent";
-		$dbc = Database();
-		$qry = $dbc->prepare($sql);
-		$qry->execute($data);
-		$rows = $qry->fetchAll(PDO::FETCH_ASSOC);
-		$dbc = null;
-		if($data['id'] != null) {
-			$out = $rows[0];
-		}else{
+		if(isset($_GET['studentId'])) {
+			$sql = "SELECT * FROM absent WHERE studentId=:id";
+			$dbc = Database();
+			$qry = $dbc->prepare($sql);
+			$qry->execute(array('id'=>$_GET['studentId']));
+			$rows = $qry->fetchAll(PDO::FETCH_ASSOC);
+			$dbc = null;
 			$out = $rows;
+		}elseif(isset($_GET['uniformId'])) {
+			$sql = "SELECT * FROM absent WHERE uniformId=:id";
+			$dbc = Database();
+			$qry = $dbc->prepare($sql);
+			$qry->execute(array('id'=>$_GET['uniformId']));
+			$rows = $qry->fetchAll(PDO::FETCH_ASSOC);
+			$dbc = null;
+			$out = $rows;
+		}else{
+			$data['id'] = (isset($request[1])) ? $request[1] : null;
+			$sql = ($data['id'] != null) ? "SELECT * FROM absent WHERE id=:id" : "SELECT * FROM absent";
+			$dbc = Database();
+			$qry = $dbc->prepare($sql);
+			$qry->execute($data);
+			$rows = $qry->fetchAll(PDO::FETCH_ASSOC);
+			$dbc = null;
+			if($data['id'] != null) {
+				$out = $rows[0];
+			}else{
+				$out = $rows;
+			}
 		}
 		echo json_encode($out);
 	break;

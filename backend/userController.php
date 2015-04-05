@@ -3,7 +3,7 @@
 switch($method) {
 	case 'GET':
 		$data['id'] = (isset($request[1])) ? $request[1] : null;
-		$sql = ($data['id'] != null) ? "SELECT * FROM user WHERE id=:id" : "SELECT * FROM user";
+		$sql = ($data['id'] != null) ? "SELECT username, name, email, phone, password FROM user WHERE id=:id" : "SELECT * FROM user";
 		$dbc = Database();
 		$qry = $dbc->prepare($sql);
 		$qry->execute($data);
@@ -37,7 +37,7 @@ switch($method) {
 			}
 		}
 		$data['id'] = $request[1];
-		$sql ="UPDATE user SET username=:username, password=:password, name=:name, email=:email, phone=:phone WHERE id=:id";
+		$sql ="UPDATE user SET username=:username, password=:password, name=:name, email=:email, phone=:phone  WHERE id=:id";
 		$dbc = Database();
 		$qry = $dbc->prepare($sql);
 		$qry->execute($data);
