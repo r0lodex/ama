@@ -15,32 +15,51 @@ angular.module('ama')
 
 // == UNIFORM CONTROLLER
 // -------------------------------
-	.controller('uniformCTRL', function($rootScope, $scope, Uniform, UniformRecord, UniformReport) {
+	.controller('uniformCTRL', function($rootScope, $scope, Uniform, UniformRecord, UniformReport, Absent) {
 		$scope.uniforms = Uniform.query();
 
 		$scope.showUniform = function(id) {
 			$rootScope.ModalForm('uniform', id);
 		}
 
-		$scope.fields = ['name', 'course', 'matrix']
+		$scope.recordfields = ['name', 'matrix'];
+		$scope.reportfields = ['name', 'matrix', 'course', 'absent_credit', 'absent_count'];
 
-		$scope.createUniformRecord = function(id) {
-			var ak = prompt('Please enter the access key');
-			if($.trim(ak) != '') {
-				$scope.uniformName = $scope.uniforms[id].name;
-				$scope.date = new Date();
-				$scope.record = UniformRecord.get({ id: id, accessKey: ak },
-					function() {}, function(response) {
-						if (response.status === 401 ) {
-							alert('Access Denied');
-							delete $scope.record;
-						}
-					})
-			} else {
-				alert('Access key not specified. We have denied your access.');
+		$scope.showAccKey = function(uniform) {
+			$scope.ask = uniform.id;
+		}
+
+		$scope.createUniformRecord = function(uniform, ak) {
+			delete $scope.report;
+			$scope.uniformName = uniform.name;
+			$scope.date = new Date();
+			$scope.record = UniformRecord.get({ id: uniform.id, accessKey: ak },
+				function() {}, function(response) {
+					if (response.status === 401 ) {
+						alert('Invalid Access Key.');
+						delete $scope.record;
+					}
+				})
+			$scope.ask = '';
+			$scope.absentlist = [];
+		}
+
+		$scope.uniformReport = function(uniform) {
+			delete $scope.record;
+			$scope.uniformName = uniform.name;
+			$scope.report = UniformReport.get({ id: uniform.id});
+		}
+
+		$scope.absentlist = [];
+		$scope.updateAbsentlist = function(action, student) {
+			if (action == 'add') {
+				console.log($scope.record)
+				$scope.absentlist.push(student);
+			}
+			if (action == 'remove') {
+				$scope.absentlist.splice(student, 1);
 			}
 		}
-		$scope.uniformReport = function(id) {}
 	})
 
 	.controller('newUniformCTRL', function($scope, modalData, Uniform) {
