@@ -10,19 +10,19 @@
 		<br>
 		<ul class="list-group">
 			<li class="list-group-item" ng-repeat="uniform in uniforms">
-				<h4 style="display: inline">
+				<h4 style="display: inline; font-family: 'gbook';">
 					{{ uniform.name }}
-					<small>Credit: {{ uniform.credit }}</small>
+					<small>{{ uniform.credit }} credits</small>
 				</h4> <br>
 				<small class="small" style="display: block; margin-top: 2px; padding-top: 5px; border-top: 1px dashed #CCC;">
-					<a ng-click="showUniform(uniform.id)">Edit</a> <span class="text-muted">&bull;</span>
+					<a ng-click="showUniform(uniform)">Edit</a> <span class="text-muted">&bull;</span>
 					<a ng-click="showAccKey(uniform)">Record</a> <span class="text-muted">&bull;</span>
 					<a ng-click="uniformReport(uniform)">Report</a>
 				</small>
 
-				<div class="form-inline small accessKey-class" ng-show="ask == uniform.id">
-					<input type="text" class="form-control input-sm" placeholder="Access Key" style="width: 60%" ng-model="accessKey">
-					<button class="btn btn-default btn-sm" ng-click="createUniformRecord(uniform, accessKey)">Go &raquo;</button>
+				<div class="input-group input-group-sm small accessKey-class" ng-show="ask == uniform.id">
+					<input type="text" class="form-control input-sm" placeholder="Access Key" ng-model="accessKey">
+					<span class="input-group-addon"><a ng-click="createUniformRecord(uniform, accessKey)">Go &raquo;</a></span>
 				</div>
 
 			</li>
@@ -33,7 +33,7 @@
 	<div class="col-md-9 bg-light-gray" ng-show="record && !report">
 		<h3 style="margin-top:0;" class="light text-primary">New Record for {{ uniformName }}</h3>
 
-		<div class="row" ng-show="record.length > 0">
+		<div class="row" ng-show="record.student.length > 0">
 			<div class="col-md-6">
 				<div class="form-group">
 					<div class="input-group">
@@ -52,7 +52,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr ng-repeat="student in record | filter: recordQuery" ng-click="updateAbsentlist('add', student)">
+							<tr ng-repeat="student in record.student | filter: recordQuery" ng-click="updateAbsentlist('add', student)">
 								<td ng-repeat="field in recordfields">
 									{{ student[field] }}
 								</td>
@@ -63,27 +63,29 @@
 			</div>
 			<div class="col-md-6">
 				<h5><k class="text-danger">ABSENT</k> <small>Today, {{ date | date:'dd MMMM yyyy' }}</small></h5>
-				<div class="empty-record-small" ng-show="absentlist.length == 0">
+				<div class="empty-record-small" ng-show="record.absent.length == 0">
 					Click on a student to mark as absent.
 				</div>
 				<table class="table table-condensed">
 					<tbody>
-						<tr ng-repeat="student in absentlist">
+						<tr ng-repeat="student in absents">
 							<td class="smalltd"><span class="icon icon-x" ng-click="updateAbsentlist('remove', student)"></span></td>
-							<td><code>{{ student.matrix }}</code> {{ student.name }}</td>
+							<td ng-repeat="rs in record.student" ng-if="rs.id == student.studentId">
+								<code>{{ rs.matrix }}</code> {{ rs.name }}
+							</td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
 		</div>
-		<div class="empty-record-small" ng-show="record.length == 0">
+		<div class="empty-record-small" ng-show="record.student.length == 0">
 			No student under this uniform.
 		</div>
 	</div>
 
 	<!-- REPORT -->
 	<div class="col-md-9 bg-light-gray2" ng-show="report && !record">
-		<h3 style="margin-top:0;" class="light text-danger">Absent Report for {{ uniformName }}</h3>
+		<h3 style="margin-top:0;" class="light text-danger">Absent Report for {{ uniformData.name }}</h3>
 		<div class="form-group">
 			<div class="input-group">
 				<span class="input-group-addon"><span class="glyphicon glyphicon-filter"></span></span>
@@ -91,7 +93,7 @@
 			</div>
 		</div>
 		<div class="table-responsive">
-			<table class="table table-bordered table-condensed list-table">
+			<table class="table table-bordered table-condensed table-hover list-table">
 				<thead>
 					<tr>
 						<th class="table-heading">#</th>
@@ -106,7 +108,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="student in report | filter: reportQuery">
+					<tr ng-repeat="student in report | filter: reportQuery" ng-click="ModalForm('absentHistory', {student: student, report: uniformData} )">
 						<td>{{ $index+1 }}</td>
 						<td ng-repeat="field in reportfields">
 							{{ student[field] }}
