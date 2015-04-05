@@ -31,7 +31,7 @@ switch($method) {
 		$qry->execute($data);
 		$lid = $dbc->lastInsertId();
 		$dbc = null;
-		echo json_encode(array('id' => $lid));
+		echo json_encode(array('aid' => $lid));
 	break;
 
 	case 'PUT':

@@ -30,7 +30,7 @@ switch($method) {
 					}
 
 					$data = array('a'=>$request[1]);
-					$sql = "SELECT * FROM student WHERE uniform=:a";
+					$sql = "SELECT stdn.id, stdn.name, stdn.matrix, abst.id AS aid FROM student stdn LEFT JOIN absent abst ON abst.studentId=stdn.id WHERE stdn.uniform=:a";
 					$qry = $dbc->prepare($sql);
 					$qry->execute($data);
 					$rows = $qry->fetchAll(PDO::FETCH_ASSOC);
