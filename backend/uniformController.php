@@ -6,7 +6,7 @@ switch($method) {
 			switch($request[2]) {
 				case 'report':
 				$data = array('id'=>$request[1]);
-					$sql = "SELECT stdn.name, stdn.matrix, stdn.course, (COUNT(abst.studentId)) AS absent_count, 
+					$sql = "SELECT stdn.id, stdn.name, stdn.matrix, stdn.course, (COUNT(abst.studentId)) AS absent_count, 
 					(COUNT(abst.studentId) * unfm.credit) AS absent_credit FROM absent abst 
 					JOIN student stdn ON stdn.id=abst.studentId JOIN uniform unfm ON unfm.id=abst.uniformId 
 					WHERE abst.uniformId=:id GROUP BY abst.studentId";
