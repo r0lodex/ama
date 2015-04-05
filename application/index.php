@@ -8,6 +8,7 @@ if(!isset($_SESSION['authorized'])) {header('Location:../');}
 	<title>AMA App Dashboard</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="../source/stylesheets/ama.css">
+	<link rel="stylesheet" type="text/css" href="../source//vendor/angular/directives/loading-bar.min.css">
 </head>
 <body>
 
@@ -53,6 +54,8 @@ if(!isset($_SESSION['authorized'])) {header('Location:../');}
 	<script src="../source/vendor/angular/angular-route.js"></script>
 	<script src="../source/vendor/angular/angular-messages.min.js"></script>
 	<script src="../source/vendor/angular/angular-modal-service.js"></script>
+	<script src="../source/vendor/angular/angular-animate.min.js"></script>
+	<script src="../source/vendor/angular/directives/loading-bar.min.js"></script>
 
 	<!-- AMA's Javascripts -->
 	<script src="../source/javascripts/ama.js"></script>
