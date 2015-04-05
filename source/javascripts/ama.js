@@ -54,10 +54,6 @@ var ama = angular.module('ama',['ngRoute', 'ngResource', 'angularModalService', 
 				templateUrl: 'views/students.ng'
 			})
 
-			.when('/users', {
-				controller: 'userCTRL',
-				templateUrl: 'views/users.ng'
-			})
 			.otherwise({
 				redirectTo: '/uniforms'
 			});
@@ -105,12 +101,6 @@ var ama = angular.module('ama',['ngRoute', 'ngResource', 'angularModalService', 
 	})
 
 // DATA FACTORIES
-	.factory('User', function($resource) {
-		return $resource('../backend/router.php/user/:id', { id: '@id'}, {
-			update: { method: 'PUT' }
-		})
-	})
-
 	.factory('Student', function($resource) {
 		return $resource('../backend/router.php/student/:id', { id: '@id'}, {
 			update: { method: 'PUT' }

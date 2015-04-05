@@ -61,5 +61,8 @@ if(!isset($_SESSION['authorized'])) {header('Location:../');}
 	<script src="../source/javascripts/ama.js"></script>
 	<script src="../source/javascripts/ama_controllers.js"></script>
 
+	<!-- Admin Only -->
+	<script src="../source/javascripts/admin.js"></script>
+
 </body>
 </html>
