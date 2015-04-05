@@ -15,44 +15,101 @@
 					<small>Credit: {{ uniform.credit }}</small>
 				</h4> <br>
 				<small class="small" style="display: block; margin-top: 2px; padding-top: 5px; border-top: 1px dashed #CCC;">
-					<a ng-click="showUniform(uniform.id)">Edit</a> |
-					<a ng-click="createUniformRecord(uniform.id)">Record</a> |
-					<a ng-click="uniformReport(uniform.id)">Report</a>
+					<a ng-click="showUniform(uniform.id)">Edit</a> <span class="text-muted">&bull;</span>
+					<a ng-click="showAccKey(uniform)">Record</a> <span class="text-muted">&bull;</span>
+					<a ng-click="uniformReport(uniform)">Report</a>
 				</small>
+
+				<div class="form-inline small accessKey-class" ng-show="ask == uniform.id">
+					<input type="text" class="form-control input-sm" placeholder="Access Key" style="width: 60%" ng-model="accessKey">
+					<button class="btn btn-default btn-sm" ng-click="createUniformRecord(uniform, accessKey)">Go &raquo;</button>
+				</div>
+
 			</li>
 		</ul>
 	</div>
-	<div class="col-md-9" ng-show="record.length > 0">
-		<h3 style="margin-top:0;" class="light text-primary">Record for {{ uniformName }} <small>{{ date | date:'dd MMMM yyyy' }}</small></h3>
+
+	<!-- RECORD -->
+	<div class="col-md-9 bg-light-gray" ng-show="record && !report">
+		<h3 style="margin-top:0;" class="light text-primary">New Record for {{ uniformName }}</h3>
+
+		<div class="row" ng-show="record.length > 0">
+			<div class="col-md-6">
+				<div class="form-group">
+					<div class="input-group">
+						<span class="input-group-addon"><span class="glyphicon glyphicon-filter"></span></span>
+						<input class="form-control input-sm" type="search" ng-model="recordQuery" placeholder="Filter Student">
+					</div>
+				</div>
+				<div class="table-responsive">
+					<table class="table table-bordered table-condensed table-hover list-table">
+						<thead>
+							<tr>
+								<th ng-repeat="field in recordfields" ng-click="sort(recordFields)" class="table-heading">
+									<attr ng-if="field != 'course'">{{ field }}</attr>
+									<attr ng-if="field == 'course'">CLASS</attr>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="student in record | filter: recordQuery" ng-click="updateAbsentlist('add', student)">
+								<td ng-repeat="field in recordfields">
+									{{ student[field] }}
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<h5><k class="text-danger">ABSENT</k> <small>Today, {{ date | date:'dd MMMM yyyy' }}</small></h5>
+				<div class="empty-record-small" ng-show="absentlist.length == 0">
+					Click on a student to mark as absent.
+				</div>
+				<table class="table table-condensed">
+					<tbody>
+						<tr ng-repeat="student in absentlist">
+							<td class="smalltd"><span class="icon icon-x" ng-click="updateAbsentlist('remove', student)"></span></td>
+							<td><code>{{ student.matrix }}</code> {{ student.name }}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="empty-record-small" ng-show="record.length == 0">
+			No student under this uniform.
+		</div>
+	</div>
+
+	<!-- REPORT -->
+	<div class="col-md-9 bg-light-gray2" ng-show="report && !record">
+		<h3 style="margin-top:0;" class="light text-danger">Absent Report for {{ uniformName }}</h3>
 		<div class="form-group">
 			<div class="input-group">
 				<span class="input-group-addon"><span class="glyphicon glyphicon-filter"></span></span>
-				<input class="form-control input-sm" type="search" ng-model="recordQuery" placeholder="Filter Student">
+				<input class="form-control input-sm" type="search" ng-model="reportQuery" placeholder="Filter Student">
 			</div>
 		</div>
-
 		<div class="table-responsive">
-			<table class="table table-bordered table-condensed">
+			<table class="table table-bordered table-condensed list-table">
 				<thead>
 					<tr>
 						<th class="table-heading">#</th>
-						<th ng-repeat="field in fields" ng-click="sort(recordFields)" class="table-heading">
-							<attr ng-if="field != 'course'">{{ field }}</attr>
-							<attr ng-if="field == 'course'">CLASS</attr>
+						<th ng-repeat="field in reportfields" class="table-heading">
+							<span ng-switch="field">
+								<attr ng-switch-when="course">CLASS</attr>
+								<attr ng-switch-when="absent_count">ABSENT COUNT</attr>
+								<attr ng-switch-when="absent_credit">CREDIT</attr>
+								<attr ng-switch-default>{{ field }}</attr>
+							</span>
 						</th>
-						<th>&nbsp;</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="student in record | filter: recordQuery">
+					<tr ng-repeat="student in report | filter: reportQuery">
 						<td>{{ $index+1 }}</td>
-						<td ng-repeat="field in fields">
+						<td ng-repeat="field in reportfields">
 							{{ student[field] }}
-						</td>
-						<td>
-							<div class="text-center">
-								<button class="btn btn-default btn-xs" ng-click="markAbsent(student.id)">Mark Absent</button>
-							</div>
 						</td>
 					</tr>
 				</tbody>
