@@ -24,11 +24,14 @@ switch($method) {
 			}
 		}
 		$data['day'] = date('d/m/Y');
-		$sql ="INSERT INTO absent (studentId,uniformId,day) SELECT id,uniform,:day from student WHERE id=:id AND NOT EXISTS(SELECT * FROM absent WHERE studentId=:d)";
+		$sql ="INSERT INTO absent (studentId, uniformId, day) SELECT id, uniform, :day FROM student 
+				WHERE id=:id AND NOT EXISTS(SELECT * FROM absent WHERE day=:day)";
 		$dbc = Database();
 		$qry = $dbc->prepare($sql);
 		$qry->execute($data);
+		$lid = $dbc->lastInsertId();
 		$dbc = null;
+		echo json_encode(array('id' => $lid));
 	break;
 
 	case 'PUT':
