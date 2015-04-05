@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50541
 File Encoding         : 65001
 
-Date: 2015-04-05 01:44:00
+Date: 2015-04-06 00:23:40
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -25,20 +25,16 @@ CREATE TABLE `absent` (
   `uniformId` int(11) DEFAULT NULL,
   `day` varchar(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=16384;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=16384;
 
 -- ----------------------------
 -- Records of absent
 -- ----------------------------
-INSERT INTO `absent` VALUES ('1', '1', '2', '25/03/2015');
-INSERT INTO `absent` VALUES ('2', '2', '3', '25/03/2015');
-INSERT INTO `absent` VALUES ('3', '1', '2', '25/03/2015');
-INSERT INTO `absent` VALUES ('4', '1', '2', '25/03/2015');
-INSERT INTO `absent` VALUES ('5', '1', '2', '25/03/2015');
-INSERT INTO `absent` VALUES ('6', '2', '3', '25/03/2015');
-INSERT INTO `absent` VALUES ('7', '3', '3', '25/03/2015');
-INSERT INTO `absent` VALUES ('8', '2', '3', '25/03/2015');
-INSERT INTO `absent` VALUES ('9', '4', '1', '31/03/2015');
+INSERT INTO `absent` VALUES ('1', '1', '1', '06/04/2015');
+INSERT INTO `absent` VALUES ('2', '1', '1', '04/04/2015');
+INSERT INTO `absent` VALUES ('3', '4', '1', '06/04/2015');
+INSERT INTO `absent` VALUES ('4', '2', '2', '05/04/2015');
+INSERT INTO `absent` VALUES ('5', '3', '3', '05/04/2015');
 
 -- ----------------------------
 -- Table structure for student
@@ -371,10 +367,10 @@ CREATE TABLE `uniform` (
 -- ----------------------------
 -- Records of uniform
 -- ----------------------------
-INSERT INTO `uniform` VALUES ('1', 'Pengakap', '3', null);
-INSERT INTO `uniform` VALUES ('2', 'Bomba', '2', null);
-INSERT INTO `uniform` VALUES ('3', 'Polis', '3', null);
-INSERT INTO `uniform` VALUES ('4', 'Ambulans', '2', null);
+INSERT INTO `uniform` VALUES ('1', 'Pengakap', '3', '1');
+INSERT INTO `uniform` VALUES ('2', 'Bomba', '2', '1');
+INSERT INTO `uniform` VALUES ('3', 'Polis', '3', '1');
+INSERT INTO `uniform` VALUES ('4', 'Ambulans', '2', '1');
 
 -- ----------------------------
 -- Table structure for user
@@ -390,7 +386,7 @@ CREATE TABLE `user` (
   `type` varchar(10) DEFAULT NULL,
   `apikey` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user
