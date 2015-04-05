@@ -1,12 +1,14 @@
-var ama = angular.module('ama',['ngRoute', 'ngResource', 'angularModalService', 'ngMessages'])
-// MODULES :                         ^           ^                  ^                  ^
-// Routing Service ------------------^           ^                  ^                  ^
-// Data Resource Service ------------------------^                  ^                  ^
-// Pop-up Modal Service --------------------------------------------^                  ^
-// Broadcast Message Service ----------------------------------------------------------^
+var ama = angular.module('ama',['ngRoute', 'ngResource', 'angularModalService', 'ngMessages', 'angular-loading-bar', 'ngAnimate'])
+// MODULES :                         ^           ^                  ^                  ^                  ^                 ^
+// Routing Service ------------------^           ^                  ^                  ^                  ^                 ^
+// Data Resource Service ------------------------^                  ^                  ^                  ^                 ^
+// Pop-up Modal Service --------------------------------------------^                  ^                  ^                 ^
+// Broadcast Message Service ----------------------------------------------------------^                  ^                 ^
+// Loading Bar Service -----------------------------------------------------------------------------------^                 ^
+// Angular Animation Service -----------------------------------------------------------------------------------------------^
 
 // INITIALIZATION
-	.run(function($rootScope, ModalService, Student, Uniform) {
+	.run(function($rootScope, ModalService, Student, Uniform, User) {
 
 		console.log('Welcome! \nCAS Web Application initialized.');
 
@@ -15,6 +17,10 @@ var ama = angular.module('ama',['ngRoute', 'ngResource', 'angularModalService', 
 			var controller = '', modalData;
 
 			switch(type) {
+				case 'user':
+					controller = (id) ? 'viewUserCTRL':'newUserCTRL';
+					modalData = (id) ? User.get({ id:id }) : false;
+				break;
 				case 'student':
 					controller = (id) ? 'viewStudentCTRL':'newStudentCTRL';
 					modalData = (id) ? Student.get({ id:id }) : false;
@@ -99,6 +105,12 @@ var ama = angular.module('ama',['ngRoute', 'ngResource', 'angularModalService', 
 	})
 
 // DATA FACTORIES
+	.factory('User', function($resource) {
+		return $resource('../backend/router.php/user/:id', { id: '@id'}, {
+			update: { method: 'PUT' }
+		})
+	})
+
 	.factory('Student', function($resource) {
 		return $resource('../backend/router.php/student/:id', { id: '@id'}, {
 			update: { method: 'PUT' }
@@ -131,7 +143,6 @@ var ama = angular.module('ama',['ngRoute', 'ngResource', 'angularModalService', 
 
 // FILTERS
 	.filter('capitalize', function() {
-		// Believe it or not, Angular doesn't have this filter built-in!
     	return function(input, all) {
       		return (!!input) ? input.replace(/([^\W_]+[^\s-]*) */g,
       			function(txt){

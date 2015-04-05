@@ -1,0 +1,38 @@
+<!-- STUDENTS LIST-->
+<h3 style="margin-top:0;">
+	<span class="small icon icon-users"></span> 
+	<k class="light">USERS</k><br>
+	
+</h3>
+<div class="form-inline">
+	<div class="form-group">
+		<button class="btn btn-default btn-sm" ng-click="ModalForm('user')"><span class="glyphicon glyphicon-plus"></span> Add User</button>
+	</div>
+	<div class="form-group">
+		<div class="input-group">
+			<span class="input-group-addon"><span class="glyphicon glyphicon-filter"></span></span>
+			<input class="form-control input-sm" type="search" ng-model="query" placeholder="Filter Users">
+		</div>
+	</div>
+</div>
+<br>
+<div class="table-responsive">
+	<table class="table table-bordered table-hover">
+		<thead>
+			<tr>
+				<th ng-repeat="field in fields" ng-click="sort(field)" class="table-heading">
+					<span ng-show="sort.field === field && !sort.order" class="icon icon-circle-down"></span>
+					<span ng-show="sort.field === field && sort.order" class="icon icon-circle-up"></span>
+					<attr>{{ field }}</attr>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-click="showUser(user)" ng-repeat="user in users | filter: query | orderBy: sort.field:sort.order">
+				<td ng-repeat="field in fields">
+					{{ user[field] }}
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

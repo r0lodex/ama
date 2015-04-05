@@ -1,0 +1,24 @@
+<div class="modal">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<h5 class="text-center text-uppercase light" style="padding: 5px"><k ng-if="editing">Edit</k><k ng-if="!editing">New</k> User</h5>
+			<div class="modal-body">
+				<form name="new_user_form" novalidate>
+					<form-field record="user" field="username" live="false" required="true"></form-field>
+					<form-field record="user" field="name" live="false" required="true"></form-field>
+					<form-field record="user" field="email" live="false" required="true"></form-field>
+					<form-field record="user" field="phone" live="false" required="true"></form-field>
+					<form-field record="user" field="password" live="false" required="true"></form-field>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<div class="center-block">
+					<button ng-show="editing" class="btn btn-primary btn-sm" ng-click="addUser()" type="button">Update</button>
+					<button ng-show="!editing" class="btn btn-primary btn-sm" ng-click="addUser()" type="button">Add User</button>
+					<button ng-show="editing" class="btn btn-danger btn-sm" ng-click="deleteUser()" type="button">Delete</button>
+					<button class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
