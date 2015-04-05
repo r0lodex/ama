@@ -33,7 +33,7 @@ switch($method) {
 	case 'PUT':
 		foreach($data as $k => $v) {
 			if(is_array($v)) {
-				$data[$k] = $v[0];
+				$data[$k] = $v;
 			}
 		}
 		$data['id'] = $request[1];
