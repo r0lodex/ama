@@ -40,7 +40,6 @@ switch($method) {
 				$data[$k] = $v[0];
 			}
 		}
-		$data['day'] = date('d/m/Y');
 		$data['id'] = $request[1];
 		$sql ="UPDATE absent SET studentId=:studentId, uniformId=:uniformId, day=:day WHERE id=:id";
 		$dbc = Database();
