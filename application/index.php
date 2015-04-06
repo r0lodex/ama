@@ -23,7 +23,7 @@ if(!isset($_SESSION['authorized'])) {header('Location:../');}
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand"><span class="icon icon-logo"></span> Curiculum Absent System</a>
+				<a class="navbar-brand"><span class="icon icon-logo"></span> CAS</a>
 			</div>
 
 			<!-- Dashboard Navigation -->

@@ -68,8 +68,8 @@
   display: block;
   position: fixed;
   z-index: 10002;
-  bottom: 10px;
-  left: 10px;
+  top: 18px;
+  left: 80px;
 }
 
 #loading-bar-spinner .spinner-icon {

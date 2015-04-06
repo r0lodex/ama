@@ -11,7 +11,7 @@ if(isset($_SESSION['authorized'])) {header('Location:application');}
 		<section id="home">
 			<div class="text-center">
 				<h1 class="light">
-					<span class="icon icon-logo"></span><br>CAS
+					<span class="icon icon-logo" style="color:#9c3"></span><br>CAS
 				</h1>
 				<p>Co-Curiculum Attendance System</p>
 			</div>
