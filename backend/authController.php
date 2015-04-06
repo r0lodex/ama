@@ -10,6 +10,7 @@ switch($request[1]) {
 		$dbc = null;
 		if($row) {
 			$_SESSION['authorized'] = $row['type'];
+			$_SESSION['user'] = $row['name'];
 			header('Location: ../../../application');
 		}else{
 			header('Location: ../../../');

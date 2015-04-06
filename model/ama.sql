@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50541
 File Encoding         : 65001
 
-Date: 2015-04-06 00:23:40
+Date: 2015-04-06 08:46:56
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -25,16 +25,15 @@ CREATE TABLE `absent` (
   `uniformId` int(11) DEFAULT NULL,
   `day` varchar(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=16384;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=16384;
 
 -- ----------------------------
 -- Records of absent
 -- ----------------------------
 INSERT INTO `absent` VALUES ('1', '1', '1', '06/04/2015');
 INSERT INTO `absent` VALUES ('2', '1', '1', '04/04/2015');
-INSERT INTO `absent` VALUES ('3', '4', '1', '06/04/2015');
-INSERT INTO `absent` VALUES ('4', '2', '2', '05/04/2015');
-INSERT INTO `absent` VALUES ('5', '3', '3', '05/04/2015');
+INSERT INTO `absent` VALUES ('3', '3', '1', '05/04/2015');
+INSERT INTO `absent` VALUES ('6', '4', '1', '06/04/2015');
 
 -- ----------------------------
 -- Table structure for student
@@ -48,19 +47,19 @@ CREATE TABLE `student` (
   `uniform` varchar(50) DEFAULT NULL,
   `course` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=299 DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=8192;
+) ENGINE=InnoDB AUTO_INCREMENT=303 DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=8192;
 
 -- ----------------------------
 -- Records of student
 -- ----------------------------
-INSERT INTO `student` VALUES ('1', 'syukri', '111', '222', '1', 'Pendidikan');
-INSERT INTO `student` VALUES ('2', 'kamal', '333', '444', '2', 'Kejururawatan');
-INSERT INTO `student` VALUES ('3', 'Manaf', '555', '666', '3', 'Kejuruteraan');
-INSERT INTO `student` VALUES ('4', 'Siti', '777', '888', '1', 'JTMK');
-INSERT INTO `student` VALUES ('5', 'MOHAMMAD NAZREEN BIN NASIR', null, '25DET14F2001', null, 'DET1A');
-INSERT INTO `student` VALUES ('6', 'NURATIKAH BINTI ATAN', null, '25DET14F2001', null, 'DET1A');
-INSERT INTO `student` VALUES ('7', 'MOHAMAD RAZI BIN HAMIN', null, '25DET14F2003', null, 'DET1A');
-INSERT INTO `student` VALUES ('8', 'MUHAMMAD UDZIR BIN ABDUL RAHMAN MANISELVAN', null, '25DET14F2005', null, 'DET1A');
+INSERT INTO `student` VALUES ('1', 'Badrol', '111', '111', '1', 'Pendidikan');
+INSERT INTO `student` VALUES ('2', 'Kamal', '222', '222', '1', 'Kejururawatan');
+INSERT INTO `student` VALUES ('3', 'Manaf', '333', '333', '1', 'Kejuruteraan');
+INSERT INTO `student` VALUES ('4', 'Siti', '444', '444', '1', 'JTMK');
+INSERT INTO `student` VALUES ('5', 'Zamarul', '555', '555', '2', 'DET1A');
+INSERT INTO `student` VALUES ('6', 'Razak', '666', '666', '2', 'DET1A');
+INSERT INTO `student` VALUES ('7', 'Rashidah', '777', '777', '2', 'DET1A');
+INSERT INTO `student` VALUES ('8', 'Zaiton', '888', '888', '2', 'DET1A');
 INSERT INTO `student` VALUES ('9', 'AHMAD SYAMIM BIN MUHAMAD NASIR', null, '25DET14F2007', null, 'DET1A');
 INSERT INTO `student` VALUES ('10', 'MOHAMAD ZULHELMI BIN HAMZAH', null, '25DET14F2009', null, 'DET1A');
 INSERT INTO `student` VALUES ('11', 'NOOR HELMY RAFIE BIN ABDULLAH', null, '25DET14F2011', null, 'DET1A');
@@ -121,7 +120,7 @@ INSERT INTO `student` VALUES ('65', 'NUR NAZWA ATALIA BINTI DAUD', null, '25DET1
 INSERT INTO `student` VALUES ('66', 'MUHAMMAD AMIN BIN NAJAMUDIN', null, '25DET14F1017', null, 'DET2A');
 INSERT INTO `student` VALUES ('67', 'MUHAMMAD FARIS AIZAT BIN IKHWAN', null, '25DET14F1018', null, 'DET2A');
 INSERT INTO `student` VALUES ('68', 'AMIRUL HAKIM BIN JORARI', null, '25DET14F1019', null, 'DET2A');
-INSERT INTO `student` VALUES ('69', 'ABDUL RASYID BIN ABDUL RAHIM', '1', '25DET14F1020', '2', 'DET2A');
+INSERT INTO `student` VALUES ('69', 'ABDUL RASYID BIN ABDUL RAHIM', '1', '25DET14F1020', '', 'DET2A');
 INSERT INTO `student` VALUES ('70', 'MUAZ NAJMI BIN SHUHADI', null, '25DET14F1021', null, 'DET2A');
 INSERT INTO `student` VALUES ('71', 'MUHAMMAD AMIRUL BIN RAHIMAN', null, '25DET14F1022', null, 'DET2A');
 INSERT INTO `student` VALUES ('72', 'AHMAD IZZUDDIN BIN ABU SAMAH', null, '25DET14F1023', null, 'DET2A');
@@ -351,6 +350,10 @@ INSERT INTO `student` VALUES ('295', 'MUHAMMAD FARIDUDDIN BIN MOHD HUSNI', null,
 INSERT INTO `student` VALUES ('296', 'THANABALAN A/L BALASANTHERAN', null, '25DNS14F1089', null, 'DNS2C');
 INSERT INTO `student` VALUES ('297', 'MOHAMAD IBRAHEM BIN MOHAMED JAFER ALI', null, '25DNS14F1090', null, 'DNS2C');
 INSERT INTO `student` VALUES ('298', 'NADIATUL SHAHIRA BINTI SAHARUDIN', null, '25DNS14F1093', null, 'DNS2C');
+INSERT INTO `student` VALUES ('299', 'MOHAMMAD NAZREEN BIN NASIR', '', '25DET14F2001', '', 'DET1A');
+INSERT INTO `student` VALUES ('300', 'NURATIKAH BINTI ATAN', '', '25DET14F2001', '', 'DET1A');
+INSERT INTO `student` VALUES ('301', 'MOHAMAD RAZI BIN HAMIN', '', '25DET14F2003', '', 'DET1A');
+INSERT INTO `student` VALUES ('302', 'MUHAMMAD UDZIR BIN ABDUL RAHMAN MANISELVAN', '', '25DET14F2005', '', 'DET1A');
 
 -- ----------------------------
 -- Table structure for uniform
@@ -367,8 +370,8 @@ CREATE TABLE `uniform` (
 -- ----------------------------
 -- Records of uniform
 -- ----------------------------
-INSERT INTO `uniform` VALUES ('1', 'Pengakap', '3', '1');
-INSERT INTO `uniform` VALUES ('2', 'Bomba', '2', '1');
+INSERT INTO `uniform` VALUES ('1', 'Pengakap', '2', '1');
+INSERT INTO `uniform` VALUES ('2', 'Bomba', '1', '1');
 INSERT INTO `uniform` VALUES ('3', 'Polis', '3', '1');
 INSERT INTO `uniform` VALUES ('4', 'Ambulans', '2', '1');
 

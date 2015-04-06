@@ -37,6 +37,7 @@ if(!isset($_SESSION['authorized'])) {header('Location:../');}
 					<?php if(isset($_SESSION['authorized']) && $_SESSION['authorized'] == 'admin') { ?>
 					<li><a href="#/users"><span class="icon icon-users"></span> Users</a></li>
 					<?php } ?>
+					<li><a href=""><?php echo $_SESSION['user'];?></a></li>
 					<li><a href="../backend/router.php/auth/logout">Logout</a></li>
 				</ul>
 			</div>
