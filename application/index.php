@@ -11,7 +11,7 @@ if(!isset($_SESSION['authorized'])) {header('Location:../');}
 	<link rel="stylesheet" type="text/css" href="../source//vendor/angular/directives/loading-bar.min.css">
 </head>
 <body>
-
+	<script>var isAdmin = false;</script>
 	<nav class="navbar navbar-inverse navbar-static-top">
 		<div class="container">
 
@@ -34,10 +34,11 @@ if(!isset($_SESSION['authorized'])) {header('Location:../');}
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
+					<li><a class="text-capitalize"><?php echo $_SESSION['user'];?></a></li>
 					<?php if(isset($_SESSION['authorized']) && $_SESSION['authorized'] == 'admin') { ?>
-					<li><a href="#/users"><span class="icon icon-users"></span> Users</a></li>
+					<li><a href="#/users"><span class="icon icon-users"></span> Manage Users</a></li>
+					<script>var isAdmin = true;</script>
 					<?php } ?>
-					<li><a href=""><?php echo $_SESSION['user'];?></a></li>
 					<li><a href="../backend/router.php/auth/logout">Logout</a></li>
 				</ul>
 			</div>
