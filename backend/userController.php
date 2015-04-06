@@ -3,7 +3,7 @@
 switch($method) {
 	case 'GET':
 		$data['id'] = (isset($request[1])) ? $request[1] : null;
-		$sql = ($data['id'] != null) ? "SELECT username, name, email, phone, password FROM user WHERE id=:id" : "SELECT * FROM user";
+		$sql = ($data['id'] != null) ? "SELECT id, username, name, email, phone, password FROM user WHERE id=:id" : "SELECT * FROM user";
 		$dbc = Database();
 		$qry = $dbc->prepare($sql);
 		$qry->execute($data);
