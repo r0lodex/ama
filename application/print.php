@@ -12,10 +12,9 @@
 			include '../backend/database.php';
 			if(isset($_GET['uniformId'])) {
 				$data = array('id'=>$_GET['uniformId']);
-				$sql = "SELECT stdn.id, stdn.name, stdn.matrix, stdn.course, (COUNT(abst.studentId)) AS absent_count, 
-				(COUNT(abst.studentId) * unfm.credit) AS absent_credit FROM absent abst 
-				JOIN student stdn ON stdn.id=abst.studentId JOIN uniform unfm ON unfm.id=abst.uniformId 
-				WHERE abst.uniformId=:id GROUP BY abst.studentId";
+				$sql = "SELECT stdn.name, stdn.matrix, stdn.course, unfm.credit, abst.day FROM absent abst 
+				JOIN student stdn ON stdn.id=abst.studentId JOIN uniform unfm on unfm.id=abst.uniformId
+				WHERE abst.uniformId=1 ORDER BY stdn.name ASC";
 				$dbc = Database();
 				$qry = $dbc->prepare($sql);
 				$qry->execute($data);
@@ -30,7 +29,7 @@
 						<th>Matrix</th>
 						<th>Class</th>
 						<th>Credit</th>
-						<th>Absent Count</th>
+						<th>Date</th>
 					</tr></thead><tbody>';
 				$i = 1;
 				foreach($rows as $row){
@@ -39,8 +38,8 @@
 						<td>".$row['name']."</td>
 						<td>".$row['matrix']."</td>
 						<td>".$row['course']."</td>
-						<td>".$row['absent_credit']."</td>
-						<td>".$row['absent_count']."</td>
+						<td>".$row['credit']."</td>
+						<td>".$row['day']."</td>
 					</tr>";
 					$i++;
 				}
