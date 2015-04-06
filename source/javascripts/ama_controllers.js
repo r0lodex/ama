@@ -131,7 +131,7 @@ angular.module('ama')
 		$scope.students = Student.query();
 
 		// Field berdasarkan database model
-		$scope.fields = ['name', 'matrix',  'course', 'ic', 'uniform']
+		$scope.fields = ['name', 'matrix',  'course', 'uniform']
 
 		// Sort table
 		$scope.sort = function(field) {
@@ -155,7 +155,6 @@ angular.module('ama')
 
 		$scope.student = new Student({
 			name : '',
-			ic : '',
 			matrix : '',
 			uniform : '1',
 			course : ''
