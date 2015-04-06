@@ -36,9 +36,9 @@
   -o-transition: width 350ms;
   transition: width 350ms;
 
-  background: #29d;
+  background: #FFF;
   position: fixed;
-  z-index: 10002;
+  z-index: 99999;
   top: 0;
   left: 0;
   width: 100%;
@@ -69,7 +69,7 @@
   position: fixed;
   z-index: 10002;
   top: 10px;
-  left: 10px;
+  left: 100px;
 }
 
 #loading-bar-spinner .spinner-icon {

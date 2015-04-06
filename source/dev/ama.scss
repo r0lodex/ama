@@ -175,3 +175,16 @@ a:hover { cursor: pointer }
 	width: 10%;
 }
 
+#slistabsent {
+	li:hover {
+		cursor: pointer;
+		background: lighten($brand-danger, 40%);
+	}
+	.s_added {
+		span {
+			color: $text-muted;
+			text-decoration: line-through;
+		}
+	}
+}
+

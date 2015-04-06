@@ -17,9 +17,22 @@ angular.module('ama')
 	.controller('uniformCTRL', function($rootScope, $scope, Uniform, UniformRecord, UniformReport, Absent) {
 		$scope.uniforms = Uniform.query();
 		$scope.isAdmin = isAdmin;
+		$scope.abs_uniformID = 0;
 
 		$scope.showUniform = function(uniform) {
 			$rootScope.ModalForm('uniform', uniform.id);
+		}
+
+		$scope.studentIsAbsent = function(student, absent) {
+			var t = false;
+			$.each(absent, function(i,v) {
+				if (v.studentId == student.id) {
+					t = true;
+					console.log('tet')
+					return false;
+				}
+			})
+			return t;
 		}
 
 		$scope.recordfields = ['name', 'matrix'];
@@ -34,6 +47,7 @@ angular.module('ama')
 
 			$scope.uniformData = uniform;
 			$scope.absents = Absent.query({ uniformId: uniform.id })
+			$scope.abs_uniformID = uniform.id;
 
 			$scope.date = new Date();
 			$scope.record = UniformRecord.get({ id: uniform.id, accessKey: ak },
@@ -53,7 +67,7 @@ angular.module('ama')
 			$scope.report = UniformReport.get({ id: uniform.id});
 		}
 
-		$scope.updateAbsentlist = function(action, student, uniformid) {
+		$scope.updateAbsentlist = function(action, student, uid) {
 			$scope.absent = new Absent({ id: student.id })
 			if (action == 'add') {
 				$scope.absent.$save();
@@ -61,14 +75,14 @@ angular.module('ama')
 			if (action == 'remove') {
 				$scope.absent.$delete({id: student.id});
 			}
-			$scope.absents = Absent.query({ uniformId: uniformid })
+			$scope.absents = Absent.query({ uniformId: uid })
 		}
 
 		$scope.absentHistory = function(student) {
 			console.log('test')
 		}
 
-		// $scope.$watch('absents');
+		$scope.$watch('absents');
 	})
 
 	.controller('newUniformCTRL', function($scope, modalData, Uniform) {

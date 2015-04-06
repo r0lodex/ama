@@ -42,44 +42,18 @@
 					</div>
 				</div>
 
-				<ul class="list-group">
-					<li class="list-group-item" ng-repeat="student in record.student | filter: recordQuery" ng-click="updateAbsentlist('add', student)">
-							<span ng-if="absents.length > 0" ng-repeat="abs in absents">
-								<s class="text-muted" ng-if="abs.studentId == student.id">{{ student.name }}</s>
-								<span ng-if="abs.studentId != student.id">{{ student.name }}</span><br>
-								<small class="text-muted">Matrix No: <code class="text-muted bg-info">{{ student.matrix }}</code></small>
-							</span>
-							<span ng-if="absents.length == 0">
-								<span>{{ student.name }}</span><br>
-								<small class="text-muted">Matrix No: <code class="text-muted bg-info">{{ student.matrix }}</code></small>
-							</span>
-						</span>
+				<ul class="list-group" id="slistabsent">
+					<li class="list-group-item" ng-repeat="student in record.student | filter: recordQuery" ng-click="updateAbsentlist('add', student, abs_uniformID)" ng-class="{s_added : studentIsAbsent(student, absents)}">
+						<span>{{ student.name }}</span>
+						<br>
+						<small>
+							<kbd class="bg-info text-info">{{ student.matrix }}</kbd>
+							<kbd class="bg-info text-info">{{ student.course }}</kbd>
+						</small>
 					</li>
 				</ul>
-<!--
-				<div class="table-responsive">
-					<table class="table table-bordered table-condensed table-hover list-table">
-						<thead>
-							<tr>
-								<th ng-repeat="field in recordfields" ng-click="sort(recordFields)" class="table-heading">
-									<attr ng-if="field != 'course'">{{ field }}</attr>
-									<attr ng-if="field == 'course'">CLASS</attr>
-								</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr ng-repeat="student in record.student | filter: recordQuery" ng-click="updateAbsentlist('add', student)">
-								<span ng-repeat="abs in absents" ng-show="student.id != abs.studentId">
-									<td ng-repeat="field in recordfields">
-										{{ student[field] }}
-									</td>
-								</span>
-							</tr>
-						</tbody>
-					</table>
-				</div>
--->
 			</div>
+
 			<div class="col-md-6">
 				<h5><k class="text-danger">ABSENT</k> <small>Today, {{ date | date:'dd MMMM yyyy' }}</small></h5>
 				<div class="empty-record-small" ng-show="absents.length == 0">
@@ -88,9 +62,11 @@
 				<table class="table table-condensed">
 					<tbody>
 						<tr ng-repeat="student in absents">
-							<td class="smalltd"><span class="icon icon-x" ng-click="updateAbsentlist('remove', student, uniformData.id)"></span></td>
+							<td class="smalltd"><span class="icon icon-x" ng-click="updateAbsentlist('remove', student, abs_uniformID)"></span></td>
 							<td ng-repeat="rs in record.student" ng-if="rs.id == student.studentId">
-								<code>{{ rs.matrix }}</code> {{ rs.name }}
+								{{ rs.name }}
+								<!-- <small><kbd class="bg-info text-info">{{ rs.matrix }}</kbd></small>
+								<small><kbd class="bg-info text-info">{{ rs.course }}</kbd></small> -->
 							</td>
 						</tr>
 					</tbody>
