@@ -46,10 +46,12 @@
 					<li class="list-group-item" ng-repeat="student in record.student | filter: recordQuery" ng-click="updateAbsentlist('add', student)">
 							<span ng-if="absents.length > 0" ng-repeat="abs in absents">
 								<s class="text-muted" ng-if="abs.studentId == student.id">{{ student.name }}</s>
-								<span ng-if="abs.studentId != student.id">{{ student.name }}</span>
+								<span ng-if="abs.studentId != student.id">{{ student.name }}</span><br>
+								<small class="text-muted">Matrix No: <code class="text-muted bg-info">{{ student.matrix }}</code></small>
 							</span>
 							<span ng-if="absents.length == 0">
-								<span>{{ student.name }}</span>
+								<span>{{ student.name }}</span><br>
+								<small class="text-muted">Matrix No: <code class="text-muted bg-info">{{ student.matrix }}</code></small>
 							</span>
 						</span>
 					</li>
