@@ -8,52 +8,48 @@
 </head>
 <body>
 	<div class="container">
-		<div class="table-responsive">
-			<div class="page-header">
-				<h1>
-					<small>Absent Report</small><br>
-					PENGAKAP
-				</h1>
-			</div>
-			<table class="table table-bordered table-condensed">
-				<thead>
-					<tr>
+		<?php
+			include '../backend/database.php';
+			if(isset($_GET['uniformId'])) {
+				$data = array('id'=>$_GET['uniformId']);
+				$sql = "SELECT stdn.id, stdn.name, stdn.matrix, stdn.course, (COUNT(abst.studentId)) AS absent_count, 
+				(COUNT(abst.studentId) * unfm.credit) AS absent_credit FROM absent abst 
+				JOIN student stdn ON stdn.id=abst.studentId JOIN uniform unfm ON unfm.id=abst.uniformId 
+				WHERE abst.uniformId=:id GROUP BY abst.studentId";
+				$dbc = Database();
+				$qry = $dbc->prepare($sql);
+				$qry->execute($data);
+				$rows = $qry->fetchAll(PDO::FETCH_ASSOC);
+				$dbc = null;
+
+				$buff ='<div class="table-responsive"><div class="page-header"><h1><small>Absent Report</small><br>'.$_GET['title'].'
+				</h1></div><table class="table table-bordered table-condensed">
+				<thead><tr>
 						<th>#</th>
 						<th>Name</th>
 						<th>Matrix</th>
 						<th>Class</th>
 						<th>Credit</th>
 						<th>Absent Count</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>1</td>
-						<td>Abu Tausi Jaiha</td>
-						<td>YMCA123456</td>
-						<td>Kelas Menjahit</td>
-						<td>12</td>
-						<td>2</td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td>Abu Tausi Jaiha</td>
-						<td>YMCA123456</td>
-						<td>Kelas Menjahit</td>
-						<td>12</td>
-						<td>2</td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td>Abu Tausi Jaiha</td>
-						<td>YMCA123456</td>
-						<td>Kelas Menjahit</td>
-						<td>12</td>
-						<td>2</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
+					</tr></thead><tbody>';
+				$i = 1;
+				foreach($rows as $row){
+					$buff.="<tr>
+						<td>".$i."</td>
+						<td>".$row['name']."</td>
+						<td>".$row['matrix']."</td>
+						<td>".$row['course']."</td>
+						<td>".$row['absent_credit']."</td>
+						<td>".$row['absent_count']."</td>
+					</tr>";
+					$i++;
+				}
+
+				$buff.='</tbody></table></div>';
+				echo $buff;
+			}
+
+		?>
 	</div>
 </body>
 </html>
