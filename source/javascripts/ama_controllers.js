@@ -2,12 +2,11 @@ angular.module('ama')
 
 // == NAVIGATION CONTROLLER
 // -------------------------------
-.controller('navCTRL', function($scope, $location) {
-	$scope.isActive = function(route) {
-        return route === $location.path();
-    };
-})
-
+	.controller('navCTRL', function($scope, $location) {
+		$scope.isActive = function(route) {
+	        return route === $location.path();
+	    };
+	})
 // <-- end navigation
 
 /**********************************************************/
@@ -17,6 +16,7 @@ angular.module('ama')
 // -------------------------------
 	.controller('uniformCTRL', function($rootScope, $scope, Uniform, UniformRecord, UniformReport, Absent) {
 		$scope.uniforms = Uniform.query();
+		$scope.isAdmin = isAdmin;
 
 		$scope.showUniform = function(uniform) {
 			$rootScope.ModalForm('uniform', uniform.id);
@@ -32,7 +32,7 @@ angular.module('ama')
 		$scope.createUniformRecord = function(uniform, ak) {
 			delete $scope.report;
 
-			$scope.uniformName = uniform.name;
+			$scope.uniformData = uniform;
 			$scope.absents = Absent.query({ uniformId: uniform.id })
 
 			$scope.date = new Date();
@@ -44,6 +44,7 @@ angular.module('ama')
 					}
 				})
 			$scope.ask = '';
+			$scope.accessKey = '';
 		}
 
 		$scope.uniformReport = function(uniform) {
@@ -52,20 +53,22 @@ angular.module('ama')
 			$scope.report = UniformReport.get({ id: uniform.id});
 		}
 
-		$scope.updateAbsentlist = function(action, student) {
+		$scope.updateAbsentlist = function(action, student, uniformid) {
 			$scope.absent = new Absent({ id: student.id })
-
 			if (action == 'add') {
 				$scope.absent.$save();
 			}
 			if (action == 'remove') {
 				$scope.absent.$delete({id: student.id});
 			}
+			$scope.absents = Absent.query({ uniformId: uniformid })
 		}
 
 		$scope.absentHistory = function(student) {
 			console.log('test')
 		}
+
+		// $scope.$watch('absents');
 	})
 
 	.controller('newUniformCTRL', function($scope, modalData, Uniform) {

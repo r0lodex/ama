@@ -12,26 +12,26 @@ var ama = angular.module('ama',['ngRoute', 'ngResource', 'angularModalService', 
 
 		console.log('Welcome! \nCAS Web Application initialized.');
 
-		$rootScope.ModalForm = function(type, id) {
+		$rootScope.ModalForm = function(type, data) {
 
 			var controller = '', modalData;
 
 			switch(type) {
 				case 'user':
-					controller = (id) ? 'viewUserCTRL':'newUserCTRL';
-					modalData = (id) ? User.get({ id:id }) : false;
+					controller = (data) ? 'viewUserCTRL':'newUserCTRL';
+					modalData = (data) ? User.get({ id:data }) : false;
 				break;
 				case 'student':
-					controller = (id) ? 'viewStudentCTRL':'newStudentCTRL';
-					modalData = (id) ? Student.get({ id:id }) : false;
+					controller = (data) ? 'viewStudentCTRL':'newStudentCTRL';
+					modalData = (data) ? Student.get({ id:data }) : false;
 				break;
 				case 'uniform':
-					controller = (id) ? 'viewUniformCTRL':'newUniformCTRL';
-					modalData = (id) ? Uniform.get({ id:id }) : false;
+					controller = (data) ? 'viewUniformCTRL':'newUniformCTRL';
+					modalData = (data) ? Uniform.get({ id:data }) : false;
 				break;
 				case 'absentHistory':
 					controller = 'absentHistoryCTRL';
-					modalData = { absentData: Absent.get(), student: id }
+					modalData = { absentData: Absent.query({ studentId: data.student.id }), student: data }
 				break;
 			}
 
@@ -133,6 +133,12 @@ var ama = angular.module('ama',['ngRoute', 'ngResource', 'angularModalService', 
 	.factory('Absent', function($resource) {
 		return $resource('../backend/router.php/absent/:id', { id: '@id'}, {
 			get: { isArray: true },
+			update: { method: 'PUT' }
+		})
+	})
+
+	.factory('User', function($resource) {
+		return $resource('../backend/router.php/user/:id', { id: '@id'}, {
 			update: { method: 'PUT' }
 		})
 	})

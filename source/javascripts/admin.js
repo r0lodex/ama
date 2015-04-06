@@ -9,19 +9,13 @@ angular.module('ama')
 		;
 	})
 
-	.factory('User', function($resource) {
-		return $resource('../backend/router.php/user/:id', { id: '@id'}, {
-			update: { method: 'PUT' }
-		})
-	})
-
 // == USER CONTROLLER
 // -------------------------------
 	.controller('userCTRL', function($rootScope, $scope, User) {
 		$scope.users = User.query();
 
 		// Field berdasarkan database model
-		$scope.fields = ['username', 'email', 'phone']
+		$scope.fields = ['username', 'email', 'phone', 'type']
 
 		// Sort table
 		$scope.sort = function(field) {

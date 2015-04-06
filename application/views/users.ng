@@ -2,7 +2,6 @@
 <h3 style="margin-top:0;">
 	<span class="small icon icon-users"></span> 
 	<k class="light">USERS</k><br>
-	
 </h3>
 <div class="form-inline">
 	<div class="form-group">
@@ -29,8 +28,9 @@
 		</thead>
 		<tbody>
 			<tr ng-click="showUser(user)" ng-repeat="user in users | filter: query | orderBy: sort.field:sort.order">
-				<td ng-repeat="field in fields">
-					{{ user[field] }}
+				<td ng-repeat="field in fields" ng-switch="field">
+					<span ng-switch-when="type"><code class="text-capitalize">{{ user[field] }}</code></span>
+					<span ng-switch-default>{{ user[field] }}</span>
 				</td>
 			</tr>
 		</tbody>
