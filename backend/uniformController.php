@@ -29,16 +29,15 @@ switch($method) {
 						exit;
 					}
 
-					$data = array('a'=>$request[1], 'b'=>date('d/m/Y'));
-					$sql = "SELECT DISTINCT stdn.* FROM student stdn WHERE stdn.uniform=:a AND stdn.id NOT IN 
-							(SELECT studentId FROM absent WHERE day=:b )";
+					$data = array('a'=>$request[1]);
+					$sql = "SELECT DISTINCT stdn.* FROM student stdn WHERE stdn.uniform=:a";
 					$qry = $dbc->prepare($sql);
 					$qry->execute($data);
 					$rows = $qry->fetchAll(PDO::FETCH_ASSOC);
 					$out['student'] = $rows;
 
-					$sql = "SELECT DISTINCT stdn.* FROM student stdn WHERE stdn.uniform=:a AND stdn.id IN 
-							(SELECT studentId FROM absent WHERE day=:b )";
+					$data = array('a'=>$request[1], 'b'=>date('d/m/Y'));
+					$sql = "SELECT * FROM absent WHERE uniformId=:a AND day=:b";
 					$qry = $dbc->prepare($sql);
 					$qry->execute($data);
 					$rows = $qry->fetchAll(PDO::FETCH_ASSOC);
