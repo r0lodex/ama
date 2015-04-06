@@ -41,6 +41,20 @@
 						<input class="form-control input-sm" type="search" ng-model="recordQuery" placeholder="Filter Student">
 					</div>
 				</div>
+
+				<ul class="list-group">
+					<li class="list-group-item" ng-repeat="student in record.student | filter: recordQuery" ng-click="updateAbsentlist('add', student)">
+							<span ng-if="absents.length > 0" ng-repeat="abs in absents">
+								<s class="text-muted" ng-if="abs.studentId == student.id">{{ student.name }}</s>
+								<span ng-if="abs.studentId != student.id">{{ student.name }}</span>
+							</span>
+							<span ng-if="absents.length == 0">
+								<span>{{ student.name }}</span>
+							</span>
+						</span>
+					</li>
+				</ul>
+<!--
 				<div class="table-responsive">
 					<table class="table table-bordered table-condensed table-hover list-table">
 						<thead>
@@ -53,13 +67,16 @@
 						</thead>
 						<tbody>
 							<tr ng-repeat="student in record.student | filter: recordQuery" ng-click="updateAbsentlist('add', student)">
-								<td ng-repeat="field in recordfields">
-									{{ student[field] }}
-								</td>
+								<span ng-repeat="abs in absents" ng-show="student.id != abs.studentId">
+									<td ng-repeat="field in recordfields">
+										{{ student[field] }}
+									</td>
+								</span>
 							</tr>
 						</tbody>
 					</table>
 				</div>
+-->
 			</div>
 			<div class="col-md-6">
 				<h5><k class="text-danger">ABSENT</k> <small>Today, {{ date | date:'dd MMMM yyyy' }}</small></h5>
