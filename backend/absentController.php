@@ -11,10 +11,10 @@ switch($method) {
 			$dbc = null;
 			$out = $rows;
 		}elseif(isset($_GET['uniformId'])) {
-			$sql = "SELECT * FROM absent WHERE uniformId=:id";
+			$sql = "SELECT * FROM absent WHERE uniformId=:id and day=:day";
 			$dbc = Database();
 			$qry = $dbc->prepare($sql);
-			$qry->execute(array('id'=>$_GET['uniformId']));
+			$qry->execute(array('id'=>$_GET['uniformId'], 'day'=>date('d/m/Y')));
 			$rows = $qry->fetchAll(PDO::FETCH_ASSOC);
 			$dbc = null;
 			$out = $rows;
@@ -41,15 +41,12 @@ switch($method) {
 				$data[$k] = $v[0];
 			}
 		}
-		$data['day'] = date('d/m/Y');
-		$sql ="INSERT INTO absent (studentId, uniformId, day) SELECT id, uniform, :day FROM student 
-				WHERE id=:id AND NOT EXISTS(SELECT * FROM absent WHERE day=:day)";
+		$day = date('d/m/Y');
+		$id  = $data['id'];
+		$sql ="INSERT INTO absent (studentId, uniformId, `day`) SELECT id, uniform, '$day' FROM student WHERE id=$id AND (NOT EXISTS(SELECT * FROM absent WHERE `day`='$day' AND studentId=$id))";
 		$dbc = Database();
-		$qry = $dbc->prepare($sql);
-		$qry->execute($data);
-		$lid = $dbc->lastInsertId();
+		$dbc->query($sql);
 		$dbc = null;
-		echo json_encode(array('aid' => $lid));
 	break;
 
 	case 'PUT':
