@@ -34,7 +34,9 @@ if(!isset($_SESSION['authorized'])) {header('Location:../');}
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
+					<?php if(isset($_SESSION['authorized']) && $_SESSION['authorized'] == 'admin') { ?>
 					<li><a href="#/users"><span class="icon icon-users"></span> Users</a></li>
+					<?php } ?>
 					<li><a href="../backend/router.php/auth/logout">Logout</a></li>
 				</ul>
 			</div>
@@ -61,8 +63,9 @@ if(!isset($_SESSION['authorized'])) {header('Location:../');}
 	<script src="../source/javascripts/ama.js"></script>
 	<script src="../source/javascripts/ama_controllers.js"></script>
 
+	<?php if(isset($_SESSION['authorized']) && $_SESSION['authorized'] == 'admin') { ?>
 	<!-- Admin Only -->
 	<script src="../source/javascripts/admin.js"></script>
-
+	<?php } ?>
 </body>
 </html>
