@@ -12,7 +12,7 @@ if(!isset($_SESSION['authorized'])) {header('Location:../');}
 </head>
 <body>
 	<script>var isAdmin = false;</script>
-	<nav class="navbar navbar-inverse navbar-fixed-top">
+	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container-fluid">
 
 			<!-- Mobile Navigation Helper -->
@@ -23,7 +23,7 @@ if(!isset($_SESSION['authorized'])) {header('Location:../');}
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand"><span class="icon icon-logo"></span> CAS</a>
+				<a class="navbar-brand"><span class="icon icon-logo"></span> Curiculum Absent System</a>
 			</div>
 
 			<!-- Dashboard Navigation -->
