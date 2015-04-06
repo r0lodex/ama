@@ -36,7 +36,7 @@
   -o-transition: width 350ms;
   transition: width 350ms;
 
-  background: #FFF;
+  background: #9C3;
   position: fixed;
   z-index: 99999;
   top: 0;
@@ -55,10 +55,10 @@
   top: 0;
   height: 2px;
   opacity: .45;
-  -moz-box-shadow: #FFF 1px 0 6px 1px;
-  -ms-box-shadow: #FFF 1px 0 6px 1px;
-  -webkit-box-shadow: #FFF 1px 0 6px 1px;
-  box-shadow: #FFF 1px 0 6px 1px;
+  -moz-box-shadow: #9C3 1px 0 6px 1px;
+  -ms-box-shadow: #9C3 1px 0 6px 1px;
+  -webkit-box-shadow: #9C3 1px 0 6px 1px;
+  box-shadow: #9C3 1px 0 6px 1px;
   -moz-border-radius: 100%;
   -webkit-border-radius: 100%;
   border-radius: 100%;
@@ -68,8 +68,8 @@
   display: block;
   position: fixed;
   z-index: 10002;
-  top: 10px;
-  left: 100px;
+  bottom: 10px;
+  left: 10px;
 }
 
 #loading-bar-spinner .spinner-icon {
@@ -77,8 +77,8 @@
   height: 14px;
 
   border:  solid 2px transparent;
-  border-top-color:  #FFF;
-  border-left-color: #FFF;
+  border-top-color:  #9C3;
+  border-left-color: #9C3;
   border-radius: 10px;
 
   -webkit-animation: loading-bar-spinner 400ms linear infinite;

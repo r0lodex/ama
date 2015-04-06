@@ -58,7 +58,6 @@ angular.module('ama')
 					}
 				})
 			$scope.ask = '';
-			$scope.accessKey = '';
 		}
 
 		$scope.uniformReport = function(uniform) {
@@ -77,12 +76,6 @@ angular.module('ama')
 			}
 			$scope.absents = Absent.query({ uniformId: uid })
 		}
-
-		$scope.absentHistory = function(student) {
-			console.log('test')
-		}
-
-		$scope.$watch('absents');
 	})
 
 	.controller('newUniformCTRL', function($scope, modalData, Uniform) {

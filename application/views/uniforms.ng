@@ -56,9 +56,11 @@
 
 			<div class="col-md-6">
 				<h5><k class="text-danger">ABSENT</k> <small>Today, {{ date | date:'dd MMMM yyyy' }}</small></h5>
+				<!--
 				<div class="empty-record-small" ng-show="absents.length == 0">
 					Click on a student to mark as absent.
 				</div>
+				-->
 				<table class="table table-condensed">
 					<tbody>
 						<tr ng-repeat="student in absents">
