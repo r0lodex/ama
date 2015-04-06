@@ -61,7 +61,6 @@ angular.module('ama')
 			if ($scope.new_user_form.$invalid) {
 				$scope.$broadcast('record:invalid');
 			} else {
-				delete $scope.user.type;
 				$scope.user.$update();
 				alert('User data successfully updated.');
 				window.location.reload();
