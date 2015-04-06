@@ -5,7 +5,6 @@
 			<div class="modal-body">
 				<form name="new_student_form" novalidate>
 					<form-field record="student" field="name" live="false" required="true"></form-field>
-					<form-field record="student" field="ic" live="false" required="true"></form-field>
 					<form-field record="student" field="matrix" live="false" required="true"></form-field>
 					<form-field record="student" field="course" live="false" required="true"></form-field>
 					<div class="form-group">
