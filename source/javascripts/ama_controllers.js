@@ -136,6 +136,7 @@ angular.module('ama')
 
 		// Dapatkan senarai Student
 		$scope.students = Student.query();
+		$scope.isAdmin = isAdmin;
 
 		// Field berdasarkan database model
 		$scope.fields = ['name', 'matrix',  'course', 'uniform']
@@ -183,6 +184,7 @@ angular.module('ama')
 		$scope.editing = true;
 		$scope.uniforms = Uniform.query();
 		$scope.student = modalData;
+		$scope.isAdmin = isAdmin;
 
 		$scope.addStudent = function() {
 			if ($scope.new_student_form.$invalid) {

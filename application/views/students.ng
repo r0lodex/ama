@@ -6,7 +6,9 @@
 </h3>
 <div class="form-inline">
 	<div class="form-group">
-		<button class="btn btn-default btn-sm" ng-click="ModalForm('student')"><span class="glyphicon glyphicon-plus"></span> Add Student</button>
+		<span ng-show="isAdmin">
+			<button class="btn btn-default btn-sm" ng-click="ModalForm('student')"><span class="glyphicon glyphicon-plus"></span> Add Student</button>
+		</span>
 	</div>
 	<div class="form-group">
 		<div class="input-group">
@@ -17,7 +19,7 @@
 </div>
 <br>
 <div class="table-responsive">
-	<table class="table table-bordered table-hover">
+	<table class="table table-bordered" ng-class="table-hover: isAdmin">
 		<thead>
 			<tr>
 				<th class="table-heading">#</th>
@@ -30,7 +32,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-click="showStudent(student.id)" ng-repeat="student in students | filter: query | orderBy: sort.field:sort.order">
+			<tr ng-click="isAdmin && showStudent(student.id)" ng-repeat="student in students | filter: query | orderBy: sort.field:sort.order">
 				<td>{{ $index+1 }}</td>
 				<td ng-repeat="field in fields">
 					{{ student[field] }}
