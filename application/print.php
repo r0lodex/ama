@@ -14,7 +14,7 @@
 				$data = array('id'=>$_GET['uniformId']);
 				$sql = "SELECT stdn.name, stdn.matrix, stdn.course, unfm.credit, abst.day FROM absent abst 
 				JOIN student stdn ON stdn.id=abst.studentId JOIN uniform unfm on unfm.id=abst.uniformId
-				WHERE abst.uniformId=1 ORDER BY stdn.name ASC";
+				WHERE abst.uniformId=:id ORDER BY stdn.name ASC";
 				$dbc = Database();
 				$qry = $dbc->prepare($sql);
 				$qry->execute($data);
