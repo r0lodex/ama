@@ -83,7 +83,7 @@
 	<!-- REPORT -->
 	<div class="col-md-9 bg-light-gray2" ng-show="report && !record">
 		<h3 style="margin-top:0;" class="light text-danger">Absent Report for {{ uniformData.name }} 
-			<small>
+			<small ng-show="report.length > 0">
 				<a class="btn btn-default btn-xs" href="print.php?uniformId={{uniformData.id}}&title={{uniformData.name}}" target="_blank">
 					<span class="glyphicon glyphicon-print"></span> Print</a>
 				<a class="btn btn-default btn-xs" href="save.php?uniformId={{uniformData.id}}&title={{uniformData.name}}" target="_blank">
