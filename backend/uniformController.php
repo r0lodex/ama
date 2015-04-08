@@ -19,8 +19,8 @@ switch($method) {
 				break;
 
 				case 'record':
-					$data = array('a'=>$_GET['accessKey']);
-					$sql = "SELECT * FROM uniform WHERE accessKey=:a";
+					$data = array('a'=>$_GET['accessKey'], 'b'=>$request[1]);
+					$sql = "SELECT * FROM uniform WHERE accessKey=:a AND id=:b";
 					$dbc = Database();
 					$qry = $dbc->prepare($sql);
 					$qry->execute($data);
