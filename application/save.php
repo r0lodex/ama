@@ -77,10 +77,10 @@ for($a='B';$a<'J';$a++) {
 // Rename sheet
 $objPHPExcel->getActiveSheet()->setTitle($_GET['title'].'_report');
 
-header("Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+header("Content-Type: application/vnd.ms-excel");
 header("Content-Disposition: attachment; filename=\"".$_GET['title']."_report.xlsx\"");
 header("Cache-Control: max-age=0");
-ob_clean();
+ob_end_clean();
 
 //$excelType = 'Excel5';
 $excelType = 'Excel2007';
